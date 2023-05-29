@@ -7,8 +7,8 @@
   <Description>
   LPEssentials reloader.
   </Description>
-  <Image>Ziegmaster/LPEssentials/Resources/Icon.tga</Image>
+  <Image>ZiegmaPlugs/LPEssentials/Resources/Icon.tga</Image>
  </Information>
- <Package>Ziegmaster.LPEReloader.Main</Package>
+ <Package>ZiegmaPlugs.LPEReloader.Main</Package>
  <Configuration Apartment="LPEReloader" />
 </Plugin>

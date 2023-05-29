@@ -1,4 +1,4 @@
-_G.VendorDirectory = "Ziegmaster";
+_G.VendorDirectory = "ZiegmaPlugs";
 
 _G.UtilsDirectory = VendorDirectory .. ".Utils";
 _G.PluginDirectory = VendorDirectory .. "." .. plugin:GetName();

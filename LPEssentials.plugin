@@ -8,8 +8,8 @@
 This tool makes your LOTRO Points farm process much more comfortable.
 Using DX11 is highly recommended due to increased max character render distance which is needed to track deed progress.
   </Description>
-  <Image>Ziegmaster/LPEssentials/Resources/Icon.tga</Image>
+  <Image>ZiegmaPlugs/LPEssentials/Resources/Icon.tga</Image>
  </Information>
- <Package>Ziegmaster.LPEssentials.Main</Package>
+ <Package>ZiegmaPlugs.LPEssentials.Main</Package>
  <Configuration Apartment="LPEssentials" />
 </Plugin>

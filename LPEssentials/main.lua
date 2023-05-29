@@ -3,7 +3,7 @@ import "Turbine.Gameplay";
 import "Turbine.UI";
 import "Turbine.UI.Lotro";
 
-import ("Ziegmaster." .. plugin:GetName() .. ".Routing");
+import ("ZiegmaPlugs." .. plugin:GetName() .. ".Routing");
 import (UtilsDirectory);
 import (SettingsDirectory);
 
@@ -16,10 +16,6 @@ PatchDataLoad(Turbine.DataScope.Account, plugin:GetName() .. "_Settings", functi
 
     import (PluginDirectory .. ".Locale." .. PluginSettings.Locale.Short);
     Turbine.Shell.WriteLine(plugin:GetName() .. " " .. plugin:GetVersion() .." [" .. PluginSettings.Locale.Short .. "] by " .. plugin:GetAuthor());
-
-    import (ObjectsDirectory);
-    import (UIDirectory);
-    import (ParserDirectory);
 
     AddListener(plugin, "Load", function()
 
@@ -74,5 +70,9 @@ PatchDataLoad(Turbine.DataScope.Account, plugin:GetName() .. "_Settings", functi
         PluginSettings.UI.PlayerTrackerWindow.xPos, PluginSettings.UI.PlayerTrackerWindow.yPos = UI.PlayerTrackerWindow:GetPosition();
         PatchDataSave(Turbine.DataScope.Account, sender:GetName() .. "_Settings", PluginSettings, function() end);
     end);
+
+    import (ObjectsDirectory);
+    import (UIDirectory);
+    import (ParserDirectory);
 
 end);

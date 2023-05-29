@@ -15,7 +15,7 @@ function PluginOptions:Constructor()
 
     self.locales = {"EN", "DE (Not Supported)", "FR (Not Supported)", "RU"};
 
-    self.LocaleComboBox = Ziegmaster.Utils.UI.ComboBox();
+    self.LocaleComboBox = ZiegmaPlugs.Utils.UI.ComboBox();
     self.LocaleComboBox:SetParent(self);
     self.LocaleComboBox:SetPosition(0, 40);
     self.LocaleComboBox:SetSize(300, 30);
@@ -191,7 +191,7 @@ function AlertsSettingsWindow:Constructor()
     self.TextLabel:SetForeColor(Turbine.UI.Color(0.95, 0.85, 0.55));
     self.TextLabel:SetText(Texts.UI.Options.AlertsTextLabel);
 
-    self.FontComboBox = Ziegmaster.Utils.UI.ComboBox();
+    self.FontComboBox = ZiegmaPlugs.Utils.UI.ComboBox();
     self.FontComboBox:SetParent(self);
     self.FontComboBox:SetPosition(25, 270);
     self.FontComboBox:SetSize(340, 30);
