@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Plugin>
+ <Information>
+  <Name>LPEReloader</Name>
+  <Author>Ziegmaster and Jeyolin</Author>
+  <Version>1.0</Version>
+  <Description>
+  LPEssentials reloader.
+  </Description>
+  <Image>Ziegmaster/LPEssentials/Resources/Icon.tga</Image>
+ </Information>
+ <Package>Ziegmaster.LPEReloader.Main</Package>
+ <Configuration Apartment="LPEReloader" />
+</Plugin>
