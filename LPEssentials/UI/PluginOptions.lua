@@ -189,7 +189,7 @@ function AlertsSettingsWindow:Constructor()
     self.TextLabel:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleCenter);
     self.TextLabel:SetFont(Turbine.UI.Lotro.Font["TrajanProBold22"]);
     self.TextLabel:SetForeColor(Turbine.UI.Color(0.95, 0.85, 0.55));
-    self.TextLabel:SetText(Texts.UI.Options.AlertsTextLabel);
+    self.TextLabel:SetText(Texts.UI.Options.AlertsFontLabel);
 
     self.FontComboBox = ComboBox();
     self.FontComboBox:SetParent(self);
