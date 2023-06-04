@@ -15,22 +15,22 @@ function PluginOptions:Constructor()
 
     self.locales = {"EN", "DE (Not Supported)", "FR (Not Supported)", "RU"};
 
-    self.LocaleComboBox = ZiegmaPlugs.Utils.UI.ComboBox();
+    self.LocaleComboBox = ComboBox();
     self.LocaleComboBox:SetParent(self);
     self.LocaleComboBox:SetPosition(0, 40);
     self.LocaleComboBox:SetSize(300, 30);
     for i = 1, 4 do
         self.LocaleComboBox:AddItem(self.locales[i], i);
     end
-    self.LocaleComboBox:ItemSelected(PluginSettings.Locale.Index);
+    self.LocaleComboBox:ItemSelected(Settings.Locale.Index);
     self.LocaleComboBox.ItemChanged = function ()
         local selection = self.LocaleComboBox:GetSelection();
         local locale = self.LocaleComboBox.label:GetText();
 
         local index = (selection == 2 or selection == 3) and 1 or selection;  
 
-        PluginSettings.Locale.Index = index;
-        PluginSettings.Locale.Short = self.locales[index];
+        Settings.Locale.Index = index;
+        Settings.Locale.Short = self.locales[index];
         Turbine.PluginManager.LoadPlugin("LPEReloader");
     end
 
@@ -40,10 +40,10 @@ function PluginOptions:Constructor()
     self.AccelerationCheckBox:SetSize(300, 40);
     self.AccelerationCheckBox:SetFont(Turbine.UI.Lotro.Font["Verdana16"]);
     self.AccelerationCheckBox:SetText(" " .. Texts.UI.Options.SimulateAcceleration);
-    self.AccelerationCheckBox:SetChecked(PluginSettings.Main.SimulateAcceleration);
+    self.AccelerationCheckBox:SetChecked(Settings.Main.SimulateAcceleration);
     self.AccelerationCheckBox.CheckedChanged = function(sender, args)
         local isChecked = self.AccelerationCheckBox:IsChecked();
-        PluginSettings.Main.SimulateAcceleration = isChecked;
+        Settings.Main.SimulateAcceleration = isChecked;
     end
 
     self.AnyDistCheckBox = Turbine.UI.Lotro.CheckBox();
@@ -52,10 +52,10 @@ function PluginOptions:Constructor()
     self.AnyDistCheckBox:SetSize(300, 40);
     self.AnyDistCheckBox:SetFont(Turbine.UI.Lotro.Font["Verdana16"]);
     self.AnyDistCheckBox:SetText(" " .. Texts.UI.Options.AnyDist);
-    self.AnyDistCheckBox:SetChecked(PluginSettings.Main.AnyDist);
+    self.AnyDistCheckBox:SetChecked(Settings.Main.AnyDist);
     self.AnyDistCheckBox.CheckedChanged = function(sender, args)
         local isChecked = self.AnyDistCheckBox:IsChecked();
-        PluginSettings.Main.AnyDist = isChecked;
+        Settings.Main.AnyDist = isChecked;
     end
 
     self.AlertsStyleButton = Turbine.UI.Lotro.Button();
@@ -75,12 +75,12 @@ function PluginOptions:Constructor()
     self.AlertsEnabledCheckBox:SetSize(300, 40);
     self.AlertsEnabledCheckBox:SetFont(Turbine.UI.Lotro.Font["Verdana16"]);
     self.AlertsEnabledCheckBox:SetText(" " .. Texts.UI.Options.AlertsEnabled);
-    self.AlertsEnabledCheckBox:SetChecked(PluginSettings.UI.AlertsWindow.Enabled);
-    self.AlertsStyleButton:SetEnabled(PluginSettings.UI.AlertsWindow.Enabled);
+    self.AlertsEnabledCheckBox:SetChecked(Settings.UI.AlertsWindow.Enabled);
+    self.AlertsStyleButton:SetEnabled(Settings.UI.AlertsWindow.Enabled);
     self.AlertsEnabledCheckBox.CheckedChanged = function(sender, args)
         local isChecked = self.AlertsEnabledCheckBox:IsChecked();
         if not isChecked then UI.AlertsSettingsWindow:Close() end;
-        PluginSettings.UI.AlertsWindow.Enabled = isChecked;
+        Settings.UI.AlertsWindow.Enabled = isChecked;
         UI.AlertsWindow:SetVisible(isChecked);
         self.AlertsStyleButton:SetEnabled(isChecked);
     end
@@ -91,10 +91,10 @@ function PluginOptions:Constructor()
     self.PlayerTrackerEnabledCheckBox:SetSize(300, 40);
     self.PlayerTrackerEnabledCheckBox:SetFont(Turbine.UI.Lotro.Font["Verdana16"]);
     self.PlayerTrackerEnabledCheckBox:SetText(" " .. Texts.UI.Options.PlayerTrackerEnabled);
-    self.PlayerTrackerEnabledCheckBox:SetChecked(PluginSettings.UI.PlayerTrackerWindow.Enabled);
+    self.PlayerTrackerEnabledCheckBox:SetChecked(Settings.UI.PlayerTrackerWindow.Enabled);
     self.PlayerTrackerEnabledCheckBox.CheckedChanged = function(sender, args)
         local isChecked = self.PlayerTrackerEnabledCheckBox:IsChecked();
-        PluginSettings.UI.PlayerTrackerWindow.Enabled = isChecked;
+        Settings.UI.PlayerTrackerWindow.Enabled = isChecked;
         UI.PlayerTrackerWindow:SetVisible(isChecked);
     end
     
@@ -149,7 +149,7 @@ function AlertsSettingsWindow:Constructor()
     self.AlertsWindowWidthSlider:SetText(Texts.UI.Options.AlertsWindowWidth);
     self.AlertsWindowWidthSlider:SetMin(100);
     self.AlertsWindowWidthSlider:SetMax(Turbine.UI.Display:GetWidth());
-    self.AlertsWindowWidthSlider:SetValue(PluginSettings.UI.AlertsWindow.Width);
+    self.AlertsWindowWidthSlider:SetValue(Settings.UI.AlertsWindow.Width);
     AddListener(self.AlertsWindowWidthSlider, "ValueChanged", function (args)
         UI.AlertsWindow:SetWidth(args.value);
     end);
@@ -161,7 +161,7 @@ function AlertsSettingsWindow:Constructor()
     self.AlertsWindowHeightSlider:SetText(Texts.UI.Options.AlertsWindowHeight);
     self.AlertsWindowHeightSlider:SetMin(20);
     self.AlertsWindowHeightSlider:SetMax(Turbine.UI.Display:GetHeight());
-    self.AlertsWindowHeightSlider:SetValue(PluginSettings.UI.AlertsWindow.Height);
+    self.AlertsWindowHeightSlider:SetValue(Settings.UI.AlertsWindow.Height);
     AddListener(self.AlertsWindowHeightSlider, "ValueChanged", function (args)
         UI.AlertsWindow:SetHeight(args.value);
     end);
@@ -175,11 +175,11 @@ function AlertsSettingsWindow:Constructor()
     self.AlertsBackgroundOpacitySlider:SetFormat("%.f %%");
     self.AlertsBackgroundOpacitySlider:SetMin(0);
     self.AlertsBackgroundOpacitySlider:SetMax(100);
-    self.AlertsBackgroundOpacitySlider:SetValue(PluginSettings.UI.AlertsWindow.BackgroundOpacity * 100);
+    self.AlertsBackgroundOpacitySlider:SetValue(Settings.UI.AlertsWindow.BackgroundOpacity * 100);
     AddListener(self.AlertsBackgroundOpacitySlider, "ValueChanged", function (args)
         args.value = args.value / 100;
         UI.AlertsWindow.Background:SetBackColor(Turbine.UI.Color(args.value, 0, 0, 0));
-        PluginSettings.UI.AlertsWindow.BackgroundOpacity = args.value;
+        Settings.UI.AlertsWindow.BackgroundOpacity = args.value;
     end);
 
     self.TextLabel = Turbine.UI.Label();
@@ -191,7 +191,7 @@ function AlertsSettingsWindow:Constructor()
     self.TextLabel:SetForeColor(Turbine.UI.Color(0.95, 0.85, 0.55));
     self.TextLabel:SetText(Texts.UI.Options.AlertsTextLabel);
 
-    self.FontComboBox = ZiegmaPlugs.Utils.UI.ComboBox();
+    self.FontComboBox = ComboBox();
     self.FontComboBox:SetParent(self);
     self.FontComboBox:SetPosition(25, 270);
     self.FontComboBox:SetSize(340, 30);
@@ -202,10 +202,10 @@ function AlertsSettingsWindow:Constructor()
             self.FontComboBox:AddItem(value, index);
         end
     end
-    self.FontComboBox:ItemSelected(PluginSettings.UI.AlertsWindow.Font);
+    self.FontComboBox:ItemSelected(Settings.UI.AlertsWindow.Font);
     self.FontComboBox.ItemChanged = function ()
         UI.AlertsWindow:SetFont(self.FontComboBox:GetSelection());
-        PluginSettings.UI.AlertsWindow.Font = self.FontComboBox:GetSelection();
+        Settings.UI.AlertsWindow.Font = self.FontComboBox:GetSelection();
     end
 
     self.AlertsTextRedSlider = Slider();
@@ -216,11 +216,11 @@ function AlertsSettingsWindow:Constructor()
     self.AlertsTextRedSlider:SetText(Texts.UI.Options.Red);
     self.AlertsTextRedSlider:SetMin(0);
     self.AlertsTextRedSlider:SetMax(255);
-    self.AlertsTextRedSlider:SetValue(PluginSettings.UI.AlertsWindow.TextRed * 255);
+    self.AlertsTextRedSlider:SetValue(Settings.UI.AlertsWindow.TextRed * 255);
     AddListener(self.AlertsTextRedSlider, "ValueChanged", function (args)
         local color = UI.AlertsWindow.Alert:GetForeColor();
         color.R = args.value / 255;
-        PluginSettings.UI.AlertsWindow.TextRed = color.R;
+        Settings.UI.AlertsWindow.TextRed = color.R;
         UI.AlertsWindow.Alert:SetForeColor(color);
     end);
 
@@ -232,11 +232,11 @@ function AlertsSettingsWindow:Constructor()
     self.AlertsTextGreenSlider:SetText(Texts.UI.Options.Green);
     self.AlertsTextGreenSlider:SetMin(0);
     self.AlertsTextGreenSlider:SetMax(255);
-    self.AlertsTextGreenSlider:SetValue(PluginSettings.UI.AlertsWindow.TextGreen * 255);
+    self.AlertsTextGreenSlider:SetValue(Settings.UI.AlertsWindow.TextGreen * 255);
     AddListener(self.AlertsTextGreenSlider, "ValueChanged", function (args)
         local color = UI.AlertsWindow.Alert:GetForeColor();
         color.G = args.value / 255;
-        PluginSettings.UI.AlertsWindow.TextGreen = color.G;
+        Settings.UI.AlertsWindow.TextGreen = color.G;
         UI.AlertsWindow.Alert:SetForeColor(color);
     end);
 
@@ -248,11 +248,11 @@ function AlertsSettingsWindow:Constructor()
     self.AlertsTextBlueSlider:SetText(Texts.UI.Options.Blue);
     self.AlertsTextBlueSlider:SetMin(0);
     self.AlertsTextBlueSlider:SetMax(255);
-    self.AlertsTextBlueSlider:SetValue(PluginSettings.UI.AlertsWindow.TextBlue * 255);
+    self.AlertsTextBlueSlider:SetValue(Settings.UI.AlertsWindow.TextBlue * 255);
     AddListener(self.AlertsTextBlueSlider, "ValueChanged", function (args)
         local color = UI.AlertsWindow.Alert:GetForeColor();
         color.B = args.value / 255;
-        PluginSettings.UI.AlertsWindow.TextBlue = color.B;
+        Settings.UI.AlertsWindow.TextBlue = color.B;
         UI.AlertsWindow.Alert:SetForeColor(color);
     end);
 
@@ -264,11 +264,11 @@ function AlertsSettingsWindow:Constructor()
     self.AlertsTextAlphaSlider:SetText(Texts.UI.Options.Alpha);
     self.AlertsTextAlphaSlider:SetMin(0);
     self.AlertsTextAlphaSlider:SetMax(100);
-    self.AlertsTextAlphaSlider:SetValue(PluginSettings.UI.AlertsWindow.TextAlpha * 100);
+    self.AlertsTextAlphaSlider:SetValue(Settings.UI.AlertsWindow.TextAlpha * 100);
     AddListener(self.AlertsTextAlphaSlider, "ValueChanged", function (args)
         local color = UI.AlertsWindow.Alert:GetForeColor();
         color.A = args.value / 100;
-        PluginSettings.UI.AlertsWindow.TextAlpha = color.A;
+        Settings.UI.AlertsWindow.TextAlpha = color.A;
         UI.AlertsWindow.Alert:SetForeColor(color);
     end);
 

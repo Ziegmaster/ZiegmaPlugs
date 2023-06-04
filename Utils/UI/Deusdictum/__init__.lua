@@ -1,4 +1,1 @@
-DeusdictumElements = DeusdictumDirectory .. ".Elements";
-DeusdictumResources = string.gsub(DeusdictumDirectory, "%.", "/") .. "/Resources";
-
-pcall( function( ) import (DeusdictumElements); end );
+pcall( function( ) import (Path.Utils .. ".UI.Deusdictum.Elements"); end );

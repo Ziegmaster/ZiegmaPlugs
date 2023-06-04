@@ -8,7 +8,9 @@ Texts.UI.Hint = "Lotro Points Essentials " .. plugin:GetVersion() .. " by " .. p
 "\n\n" ..
 "Works at character render distance." ..
 "\n" ..
-"Works in Ered Luin, Bree, Shire, Wraith of Water(Fornost). Also supports racial slayer deeds." ..
+"Supported regions: Ered Luin, Bree, Shire, Wraith of Water(Fornost)." ..
+"\n" ..
+"Also supports racial slayer deeds for beornings." ..
 "\n" ..
 "We do not recommend using it in a raid, as well as changing the composition of the group after the start of the session due to Lotro API issues." ..
 "\n\n\n" ..

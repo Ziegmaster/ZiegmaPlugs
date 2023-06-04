@@ -2,7 +2,7 @@
 
 import "Turbine.UI";
 
-ShortcutButton = class (Turbine.UI.Control);
+_G.ShortcutButton = class (Turbine.UI.Control);
 
 function ShortcutButton:Constructor()
 

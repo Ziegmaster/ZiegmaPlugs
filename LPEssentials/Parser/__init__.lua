@@ -1,4 +1,4 @@
-function ParseDefeatMessage(msg)
+local function ParseDefeatMessage(msg)
     local slayer, prey = string.match(msg, Texts.Parser.DefeatSearchPattern);
     for i, player in pairs(SessionInstance.PlayerGroup) do
         if slayer == Texts.Parser.LocalPlayerAlias or slayer == player:GetName() then

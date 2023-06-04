@@ -1,4 +1,4 @@
-pcall( function( ) import (DeusdictumElements .. ".DraggableWindow"); end );
-pcall( function( ) import (DeusdictumElements .. ".DeltaButton"); end );
-pcall( function( ) import (DeusdictumElements .. ".DragBar"); end );
-pcall( function( ) import (DeusdictumElements .. ".DragAndDrop"); end );
+pcall( function( ) import (Path.Utils .. ".UI.Deusdictum.Elements.DraggableWindow"); end );
+pcall( function( ) import (Path.Utils .. ".UI.Deusdictum.Elements.DeltaButton"); end );
+pcall( function( ) import (Path.Utils .. ".UI.Deusdictum.Elements.DragBar"); end );
+pcall( function( ) import (Path.Utils .. ".UI.Deusdictum.Elements.DragAndDrop"); end );

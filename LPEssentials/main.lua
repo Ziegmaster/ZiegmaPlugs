@@ -3,25 +3,29 @@ import "Turbine.Gameplay";
 import "Turbine.UI";
 import "Turbine.UI.Lotro";
 
-import ("ZiegmaPlugs." .. plugin:GetName() .. ".Routing");
-import (UtilsDirectory);
-import (SettingsDirectory);
+import ("ZiegmaPlugs.Path");
 
-_G.PluginSettings = LoadDefaultSettings();
+import (Path.Settings);
+
+import (Path.Utils .. ".LuaTable");
+import (Path.Utils .. ".VindarPatch");
+import (Path.Utils .. ".Misc");
+
+_G.Settings = LoadDefaultSettings();
 _G.SessionInstance = nil;
 
 PatchDataLoad(Turbine.DataScope.Account, plugin:GetName() .. "_Settings", function(data)
 
-    if data then PluginSettings = table.merge(PluginSettings, data) end;
+    if data then Settings = table.merge(Settings, data) end;
 
-    import (PluginDirectory .. ".Locale." .. PluginSettings.Locale.Short);
-    Turbine.Shell.WriteLine(plugin:GetName() .. " " .. plugin:GetVersion() .." [" .. PluginSettings.Locale.Short .. "] by " .. plugin:GetAuthor());
+    import (Path.Plugin .. ".Locale." .. Settings.Locale.Short);
+    Turbine.Shell.WriteLine(plugin:GetName() .. " " .. plugin:GetVersion() .." [" .. Settings.Locale.Short .. "] by " .. plugin:GetAuthor());
 
     AddListener(plugin, "Load", function()
 
         PluginUnload("LPEReloader");
 
-        PluginSettings.FirstLaunch = false;
+        Settings.FirstLaunch = false;
 
         --Start session
         function start()
@@ -30,6 +34,7 @@ PatchDataLoad(Turbine.DataScope.Account, plugin:GetName() .. "_Settings", functi
             UI.MainWindow.DeedContainer.Hint:SetVisible(false);
             UI.MainWindow.DeedContainer:SetWantsUpdates(true);
         end
+        
         --Reset session
         function reset()
             SessionInstance = Session();
@@ -64,15 +69,15 @@ PatchDataLoad(Turbine.DataScope.Account, plugin:GetName() .. "_Settings", functi
     end);
     
     AddListener(plugin, "Unload", function(sender, args)
-        PluginSettings.UI.MainWindow.xPos, PluginSettings.UI.MainWindow.yPos = UI.MainWindow:GetPosition();
-        PluginSettings.UI.MainWindowToggle.xPos, PluginSettings.UI.MainWindowToggle.yPos = UI.MainWindowToggle:GetPosition();
-        PluginSettings.UI.AlertsWindow.xPos, PluginSettings.UI.AlertsWindow.yPos = UI.AlertsWindow:GetPosition();
-        PluginSettings.UI.PlayerTrackerWindow.xPos, PluginSettings.UI.PlayerTrackerWindow.yPos = UI.PlayerTrackerWindow:GetPosition();
-        PatchDataSave(Turbine.DataScope.Account, sender:GetName() .. "_Settings", PluginSettings, function() end);
+        Settings.UI.MainWindow.xPos, Settings.UI.MainWindow.yPos = UI.MainWindow:GetPosition();
+        Settings.UI.MainWindowToggle.xPos, Settings.UI.MainWindowToggle.yPos = UI.MainWindowToggle:GetPosition();
+        Settings.UI.AlertsWindow.xPos, Settings.UI.AlertsWindow.yPos = UI.AlertsWindow:GetPosition();
+        Settings.UI.PlayerTrackerWindow.xPos, Settings.UI.PlayerTrackerWindow.yPos = UI.PlayerTrackerWindow:GetPosition();
+        PatchDataSave(Turbine.DataScope.Account, sender:GetName() .. "_Settings", Settings, function() end);
     end);
 
-    import (ObjectsDirectory);
-    import (UIDirectory);
-    import (ParserDirectory);
+    import (Path.Objects);
+    import (Path.UI);
+    import (Path.Parser);
 
 end);

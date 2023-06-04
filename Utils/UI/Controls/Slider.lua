@@ -1,7 +1,7 @@
 import "Turbine.UI";
 
 sliderWidget = Turbine.UI.Graphic(0x41007e0c);
-sliderWidgetDisabled = Turbine.UI.Graphic(string.gsub(UtilsDirectory, "%.", "/") .. "/UI/Resources/slider_widget_ghosted.tga");
+sliderWidgetDisabled = Turbine.UI.Graphic(string.gsub(Path.Utils, "%.", "/") .. "/UI/Controls/Resources/slider_widget_ghosted.tga");
 sliderBackground = Turbine.UI.Graphic(0x41007e0b);
 sliderLeftArrow = Turbine.UI.Graphic(0x41007e0e);
 sliderLeftArrowPressed = Turbine.UI.Graphic(0x41007e0d);

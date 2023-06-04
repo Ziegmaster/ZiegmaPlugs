@@ -1,31 +1,28 @@
-
--- version 1.3b
--- Change in how resource filenames are stored and allow overriding.
--- Added support for DeltaButton / a button to rotate the target window
--- Added Z order correction for Rotator when dragging.
-
 import "Turbine.UI";
 import "Turbine.UI.Lotro";
-local deltaButtonAvailable = pcall( function( ) import (DeusdictumElements .. ".DeltaButton"); end );
+
+local deltaButtonAvailable = pcall( function( ) import (Path.Utils .. ".UI.Deusdictum.Elements.DeltaButton"); end );
+
+local res = string.gsub(Path.Utils .. ".UI.Deusdictum", "%.", "/") .. "/Resources";
 
 local defaultDragBarResources = {
 	  Bar = {
-				  Normal = DeusdictumResources .. "/DragBarBar.tga"
-				, Dragged = DeusdictumResources .. "/DragBarBar_Dragged.tga"
+				  Normal = res .. "/DragBarBar.tga"
+				, Dragged = res .. "/DragBarBar_Dragged.tga"
 			}
 	, Corner = {
-				  Normal = DeusdictumResources .. "/DragBarCorner.tga"
-				, Dragged = DeusdictumResources .. "/DragBarCorner_Dragged.tga"
+				  Normal = res .. "/DragBarCorner.tga"
+				, Dragged = res .. "/DragBarCorner_Dragged.tga"
 			   }
 	, Hover = {
-				  TopLeft = DeusdictumResources .. "/DragBarHoverBox_TopLeft.tga"
-				, Top = DeusdictumResources .. "/DragBarHoverBox_Top.tga"
-				, TopRight = DeusdictumResources .. "/DragBarHoverBox_TopRight.tga"
-				, Left = DeusdictumResources .. "/DragBarHoverBox_Left.tga"
-				, Right = DeusdictumResources .. "/DragBarHoverBox_Right.tga"
-				, BottomLeft = DeusdictumResources .. "/DragBarHoverBox_BottomLeft.tga"
-				, Bottom = DeusdictumResources .. "/DragBarHoverBox_Bottom.tga"
-				, BottomRight = DeusdictumResources .. "/DragBarHoverBox_BottomRight.tga"
+				  TopLeft = res .. "/DragBarHoverBox_TopLeft.tga"
+				, Top = res .. "/DragBarHoverBox_Top.tga"
+				, TopRight = res .. "/DragBarHoverBox_TopRight.tga"
+				, Left = res .. "/DragBarHoverBox_Left.tga"
+				, Right = res .. "/DragBarHoverBox_Right.tga"
+				, BottomLeft = res .. "/DragBarHoverBox_BottomLeft.tga"
+				, Bottom = res .. "/DragBarHoverBox_Bottom.tga"
+				, BottomRight = res .. "/DragBarHoverBox_BottomRight.tga"
 			  }
 };
 

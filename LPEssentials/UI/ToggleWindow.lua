@@ -6,8 +6,8 @@ function MainWindowToggle:Constructor()
 
     self:SetSize(48, 48);
     self:SetOpacity(0.6);
-    self:SetPosition(PluginSettings.UI.MainWindowToggle.xPos, PluginSettings.UI.MainWindowToggle.yPos);
-    self:SetBackground(Resources .. "/coinbag.tga");
+    self:SetPosition(Settings.UI.MainWindowToggle.xPos, Settings.UI.MainWindowToggle.yPos);
+    self:SetBackground(Path.Resources .. "/coinbag.tga");
     self:SetVisible(true);
     self:SetEnabled(true);
     self:SetMouseVisible(true);

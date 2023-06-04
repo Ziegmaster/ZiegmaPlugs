@@ -4,11 +4,11 @@ function MainWindow:Constructor()
 
     LPELotroGoldWindow.Constructor(self);
 
-    self:SetSize(PluginSettings.UI.MainWindow.Width, PluginSettings.UI.MainWindow.Height);
-    self:SetPosition(PluginSettings.UI.MainWindow.xPos, PluginSettings.UI.MainWindow.yPos);
+    self:SetSize(Settings.UI.MainWindow.Width, Settings.UI.MainWindow.Height);
+    self:SetPosition(Settings.UI.MainWindow.xPos, Settings.UI.MainWindow.yPos);
     self:SetText("LPEssentials");
     self:SetResizable(false);
-    self:SetVisible(PluginSettings.FirstLaunch);
+    self:SetVisible(Settings.FirstLaunch);
 
     self.Icon = Turbine.UI.Control();
     self.Icon:SetParent(self);
@@ -16,42 +16,42 @@ function MainWindow:Constructor()
     self.Icon:SetStretchMode(1);
     self.Icon:SetSize(34, 34);
     self.Icon:SetPosition(222, 0);
-    self.Icon:SetBackground(Resources .. "/lpicon.tga");
+    self.Icon:SetBackground(Path.Resources .. "/lpicon.tga");
     self.Icon:SetBackColorBlendMode(Turbine.UI.BlendMode.AlphaBlend);
 
     self.ButtonContainer = Turbine.UI.Control();
     self.ButtonContainer:SetParent(self);
-    self.ButtonContainer:SetSize(PluginSettings.UI.MainWindow.ButtonContainer.Width, PluginSettings.UI.MainWindow.ButtonContainer.Height);
-    self.ButtonContainer:SetPosition(PluginSettings.UI.MainWindow.ButtonContainer.xPos, PluginSettings.UI.MainWindow.ButtonContainer.yPos);
+    self.ButtonContainer:SetSize(Settings.UI.MainWindow.ButtonContainer.Width, Settings.UI.MainWindow.ButtonContainer.Height);
+    self.ButtonContainer:SetPosition(Settings.UI.MainWindow.ButtonContainer.xPos, Settings.UI.MainWindow.ButtonContainer.yPos);
     self.ButtonContainer.Buttons = {};
 
     self.ButtonContainer.Buttons.Parser = Turbine.UI.Lotro.GoldButton();
-    self.ButtonContainer.Buttons.Parser:SetSize(PluginSettings.UI.MainWindow.ButtonContainer.ButtonWidth, PluginSettings.UI.MainWindow.ButtonContainer.ButtonHeight);
+    self.ButtonContainer.Buttons.Parser:SetSize(Settings.UI.MainWindow.ButtonContainer.ButtonWidth, Settings.UI.MainWindow.ButtonContainer.ButtonHeight);
     self.ButtonContainer.Buttons.Parser:SetPosition(0, 0);
     self.ButtonContainer.Buttons.Parser:SetParent(self.ButtonContainer);
     self.ButtonContainer.Buttons.Parser:SetText(Texts.UI.Buttons.Parser);
 
     self.ButtonContainer.Buttons.Start = Turbine.UI.Lotro.GoldButton();
-    self.ButtonContainer.Buttons.Start:SetSize(PluginSettings.UI.MainWindow.ButtonContainer.ButtonWidth, PluginSettings.UI.MainWindow.ButtonContainer.ButtonHeight);
-    self.ButtonContainer.Buttons.Start:SetPosition(0, PluginSettings.UI.MainWindow.ButtonContainer.ButtonHeight + PluginSettings.UI.ElementsDefaultMargin);
+    self.ButtonContainer.Buttons.Start:SetSize(Settings.UI.MainWindow.ButtonContainer.ButtonWidth, Settings.UI.MainWindow.ButtonContainer.ButtonHeight);
+    self.ButtonContainer.Buttons.Start:SetPosition(0, Settings.UI.MainWindow.ButtonContainer.ButtonHeight + Settings.UI.ElementsDefaultMargin);
     self.ButtonContainer.Buttons.Start:SetParent(self.ButtonContainer);
     self.ButtonContainer.Buttons.Start:SetText(Texts.UI.Buttons.Start);
 
     self.ButtonContainer.Buttons.Debug = Turbine.UI.Lotro.GoldButton();
-    self.ButtonContainer.Buttons.Debug:SetSize(PluginSettings.UI.MainWindow.ButtonContainer.ButtonWidth, PluginSettings.UI.MainWindow.ButtonContainer.ButtonHeight);
-    self.ButtonContainer.Buttons.Debug:SetPosition(PluginSettings.UI.MainWindow.ButtonContainer.ButtonWidth + PluginSettings.UI.ElementsDefaultMargin * 2, 0);
+    self.ButtonContainer.Buttons.Debug:SetSize(Settings.UI.MainWindow.ButtonContainer.ButtonWidth, Settings.UI.MainWindow.ButtonContainer.ButtonHeight);
+    self.ButtonContainer.Buttons.Debug:SetPosition(Settings.UI.MainWindow.ButtonContainer.ButtonWidth + Settings.UI.ElementsDefaultMargin * 2, 0);
     self.ButtonContainer.Buttons.Debug:SetParent(self.ButtonContainer);
     self.ButtonContainer.Buttons.Debug:SetText(Texts.UI.Buttons.Debug);
 
     self.ButtonContainer.Buttons.Reset = Turbine.UI.Lotro.GoldButton();
-    self.ButtonContainer.Buttons.Reset:SetSize(PluginSettings.UI.MainWindow.ButtonContainer.ButtonWidth, PluginSettings.UI.MainWindow.ButtonContainer.ButtonHeight);
-    self.ButtonContainer.Buttons.Reset:SetPosition(PluginSettings.UI.MainWindow.ButtonContainer.ButtonWidth + PluginSettings.UI.ElementsDefaultMargin * 2, PluginSettings.UI.MainWindow.ButtonContainer.ButtonHeight + PluginSettings.UI.ElementsDefaultMargin);
+    self.ButtonContainer.Buttons.Reset:SetSize(Settings.UI.MainWindow.ButtonContainer.ButtonWidth, Settings.UI.MainWindow.ButtonContainer.ButtonHeight);
+    self.ButtonContainer.Buttons.Reset:SetPosition(Settings.UI.MainWindow.ButtonContainer.ButtonWidth + Settings.UI.ElementsDefaultMargin * 2, Settings.UI.MainWindow.ButtonContainer.ButtonHeight + Settings.UI.ElementsDefaultMargin);
     self.ButtonContainer.Buttons.Reset:SetParent(self.ButtonContainer);
     self.ButtonContainer.Buttons.Reset:SetText(Texts.UI.Buttons.Reset);
 
     self.TimeSpan = Turbine.UI.Lotro.TextBox();
-    self.TimeSpan:SetSize(PluginSettings.UI.MainWindow.TimeSpan.Width, PluginSettings.UI.MainWindow.TimeSpan.Height);
-    self.TimeSpan:SetPosition(PluginSettings.UI.MainWindow.TimeSpan.xPos, PluginSettings.UI.MainWindow.TimeSpan.yPos);
+    self.TimeSpan:SetSize(Settings.UI.MainWindow.TimeSpan.Width, Settings.UI.MainWindow.TimeSpan.Height);
+    self.TimeSpan:SetPosition(Settings.UI.MainWindow.TimeSpan.xPos, Settings.UI.MainWindow.TimeSpan.yPos);
     self.TimeSpan:SetReadOnly(true);
     self.TimeSpan:SetSelectable(false);
     self.TimeSpan:SetParent(self);
@@ -63,28 +63,28 @@ function MainWindow:Constructor()
 
     self.GroupContainer = Turbine.UI.Control();
     self.GroupContainer:SetParent(self);
-    self.GroupContainer:SetSize(PluginSettings.UI.MainWindow.GroupContainer.Width, PluginSettings.UI.MainWindow.GroupContainer.Height);
-    self.GroupContainer:SetPosition(PluginSettings.UI.MainWindow.GroupContainer.xPos, PluginSettings.UI.MainWindow.GroupContainer.yPos);
+    self.GroupContainer:SetSize(Settings.UI.MainWindow.GroupContainer.Width, Settings.UI.MainWindow.GroupContainer.Height);
+    self.GroupContainer:SetPosition(Settings.UI.MainWindow.GroupContainer.xPos, Settings.UI.MainWindow.GroupContainer.yPos);
     self.GroupContainer.Players = {};
 
     for i = 1, 6 do
         local badge = Turbine.UI.Lotro.TextBox();
         badge:SetParent(self.GroupContainer);
-        badge:SetSize(PluginSettings.UI.MainWindow.GroupContainer.PlayerBadge.Width, PluginSettings.UI.MainWindow.GroupContainer.PlayerBadge.Height);
-        badge:SetPosition(0, (i - 1) * PluginSettings.UI.MainWindow.GroupContainer.PlayerBadge.Height + (i - 1) * PluginSettings.UI.ElementsDefaultMargin);
+        badge:SetSize(Settings.UI.MainWindow.GroupContainer.PlayerBadge.Width, Settings.UI.MainWindow.GroupContainer.PlayerBadge.Height);
+        badge:SetPosition(0, (i - 1) * Settings.UI.MainWindow.GroupContainer.PlayerBadge.Height + (i - 1) * Settings.UI.ElementsDefaultMargin);
         badge:SetReadOnly(true);
         badge:SetSelectable(false);
         badge.EffectDisplay = Turbine.UI.Lotro.EffectDisplay();
         badge.EffectDisplay:SetParent(badge);
         badge.EffectDisplay:SetSize(20, 20);
-        badge.EffectDisplay:SetPosition(4, PluginSettings.UI.MainWindow.GroupContainer.PlayerBadge.Height - 24);
+        badge.EffectDisplay:SetPosition(4, Settings.UI.MainWindow.GroupContainer.PlayerBadge.Height - 24);
         badge.EffectDisplay:SetVisible(false);
         badge.EffectDisplay:SetZOrder(1);
         badge.EffectTimer = Turbine.UI.Label();
         badge.EffectTimer:SetFont(Turbine.UI.Lotro.Font["VerdanaBold16"]);
         badge.EffectTimer:SetParent(badge);
         badge.EffectTimer:SetSize(70, 20);
-        badge.EffectTimer:SetPosition(28, PluginSettings.UI.MainWindow.GroupContainer.PlayerBadge.Height - 24);
+        badge.EffectTimer:SetPosition(28, Settings.UI.MainWindow.GroupContainer.PlayerBadge.Height - 24);
         badge.EffectTimer:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft);
         badge.EffectTimer:SetZOrder(1);
         badge.EffectTimer:SetVisible(false);
@@ -93,7 +93,7 @@ function MainWindow:Constructor()
         badge.DistanceTrack:SetText(Texts.UI.TFA);
         badge.DistanceTrack:SetParent(badge);
         badge.DistanceTrack:SetSize(40, 20);
-        badge.DistanceTrack:SetPosition(100, PluginSettings.UI.MainWindow.GroupContainer.PlayerBadge.Height - 24);
+        badge.DistanceTrack:SetPosition(100, Settings.UI.MainWindow.GroupContainer.PlayerBadge.Height - 24);
         badge.DistanceTrack:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleRight);
         badge.DistanceTrack:SetZOrder(1);
         badge.DistanceTrack:SetVisible(false);
@@ -165,8 +165,8 @@ function MainWindow:Constructor()
 
     self.DeedContainer = Turbine.UI.Control();
     self.DeedContainer:SetParent(self);
-    self.DeedContainer:SetSize(PluginSettings.UI.MainWindow.DeedContainer.Width, PluginSettings.UI.MainWindow.DeedContainer.Height);
-    self.DeedContainer:SetPosition(PluginSettings.UI.MainWindow.DeedContainer.xPos, PluginSettings.UI.MainWindow.DeedContainer.yPos);
+    self.DeedContainer:SetSize(Settings.UI.MainWindow.DeedContainer.Width, Settings.UI.MainWindow.DeedContainer.Height);
+    self.DeedContainer:SetPosition(Settings.UI.MainWindow.DeedContainer.xPos, Settings.UI.MainWindow.DeedContainer.yPos);
     self.DeedContainer:SetWantsUpdates(false);
     self.DeedContainer.Objects = {};
     self.DeedContainer.Hint = Turbine.UI.Label();
@@ -202,13 +202,13 @@ function MainWindow:Constructor()
         local badge = Turbine.UI.Control();
         badge:SetParent(self.DeedContainer);
         badge:SetVisible(false);
-        badge:SetSize(PluginSettings.UI.MainWindow.DeedContainer.DeedBadge.Width, PluginSettings.UI.MainWindow.DeedContainer.DeedBadge.Height);
-        badge:SetPosition(0, (i - 1) * PluginSettings.UI.MainWindow.DeedContainer.DeedBadge.Height + (i - 1) * PluginSettings.UI.ElementsDefaultMargin);
+        badge:SetSize(Settings.UI.MainWindow.DeedContainer.DeedBadge.Width, Settings.UI.MainWindow.DeedContainer.DeedBadge.Height);
+        badge:SetPosition(0, (i - 1) * Settings.UI.MainWindow.DeedContainer.DeedBadge.Height + (i - 1) * Settings.UI.ElementsDefaultMargin);
         badge.DeedName = Turbine.UI.TextBox();
         badge.DeedName:SetReadOnly(true);
         badge.DeedName:SetSelectable(false);
         badge.DeedName:SetParent(badge);
-        badge.DeedName:SetSize(PluginSettings.UI.MainWindow.DeedContainer.DeedBadge.Width/6*4, PluginSettings.UI.MainWindow.DeedContainer.DeedBadge.Height/2);
+        badge.DeedName:SetSize(Settings.UI.MainWindow.DeedContainer.DeedBadge.Width/6*4, Settings.UI.MainWindow.DeedContainer.DeedBadge.Height/2);
         badge.DeedName:SetPosition(0,0);
         badge.DeedName:SetFont(Turbine.UI.Lotro.Font["VerdanaBold16"]);
         badge.DeedName:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft);
@@ -216,18 +216,18 @@ function MainWindow:Constructor()
         badge.DeedLocation:SetReadOnly(true);
         badge.DeedLocation:SetSelectable(false);
         badge.DeedLocation:SetParent(badge);
-        badge.DeedLocation:SetSize(PluginSettings.UI.MainWindow.DeedContainer.DeedBadge.Width/6*2, PluginSettings.UI.MainWindow.DeedContainer.DeedBadge.Height/2);
-        badge.DeedLocation:SetPosition(PluginSettings.UI.MainWindow.DeedContainer.DeedBadge.Width/6*4, 0);
+        badge.DeedLocation:SetSize(Settings.UI.MainWindow.DeedContainer.DeedBadge.Width/6*2, Settings.UI.MainWindow.DeedContainer.DeedBadge.Height/2);
+        badge.DeedLocation:SetPosition(Settings.UI.MainWindow.DeedContainer.DeedBadge.Width/6*4, 0);
         badge.DeedLocation:SetFont(Turbine.UI.Lotro.Font["VerdanaBold16"]);
         badge.DeedLocation:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleRight);
         badge.PlayerProgress = {};
         for j=1, 6 do
             local playerProgress = Turbine.UI.Lotro.TextBox();
             playerProgress:SetParent(badge);
-            playerProgress:SetSize(PluginSettings.UI.MainWindow.DeedContainer.DeedBadge.Width/6, PluginSettings.UI.MainWindow.DeedContainer.DeedBadge.Height/2);
+            playerProgress:SetSize(Settings.UI.MainWindow.DeedContainer.DeedBadge.Width/6, Settings.UI.MainWindow.DeedContainer.DeedBadge.Height/2);
             playerProgress:SetFont(Turbine.UI.Lotro.Font["Verdana14"]);
             playerProgress:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleCenter);
-            playerProgress:SetPosition(PluginSettings.UI.MainWindow.DeedContainer.DeedBadge.Width/6 * (j - 1), PluginSettings.UI.MainWindow.DeedContainer.DeedBadge.Height/2);
+            playerProgress:SetPosition(Settings.UI.MainWindow.DeedContainer.DeedBadge.Width/6 * (j - 1), Settings.UI.MainWindow.DeedContainer.DeedBadge.Height/2);
             playerProgress:SetReadOnly(true);
             playerProgress:SetSelectable(false);
             table.insert(badge.PlayerProgress, playerProgress);

@@ -1,6 +1,5 @@
-_G.VendorDirectory = "ZiegmaPlugs";
-_G.UtilsDirectory = VendorDirectory .. ".Utils";
+import ("ZiegmaPlugs.Path");
 
-import (UtilsDirectory);
+import (Path.Utils .. ".Misc");
 
 PluginReload("LPEssentials");

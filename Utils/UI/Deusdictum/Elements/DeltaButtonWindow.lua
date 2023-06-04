@@ -1,7 +1,3 @@
-
--- version 1.0
--- Initial version.
-
 import "Turbine.UI";
 import "Turbine.UI.Lotro";
 

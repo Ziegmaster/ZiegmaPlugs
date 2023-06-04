@@ -1,75 +1,3 @@
-LPEWindow = class (Turbine.UI.Window);
-
-function LPEWindow:Constructor()
-
-    Turbine.UI.Window.Constructor(self);
-    
-end
-
-LPELotroWindow = class (Turbine.UI.Lotro.Window);
-
-function LPELotroWindow:Constructor()
-    
-    Turbine.UI.Lotro.Window.Constructor(self);
-
-    self.HUDVisible = true;
-
-    self:SetWantsKeyEvents(true);
-    self.KeyDown = function(sender, args)
-        if args.Action == Turbine.UI.Lotro.Action.Escape then
-            if self:IsVisible() then self:Close() end;
-        elseif args.Action == 0x100000B3 then
-            self:ToggleUI();
-        end
-    end
-
-end
-
-function LPELotroWindow:ToggleUI()
-
-    self.HUDVisible = not self.HUDVisible;
-    
-    if not self.HUDVisible then
-        self.IsVisibleBuffer = self:IsVisible();
-        self:SetVisible(self.HUDVisible);
-    else
-        self:SetVisible(self.IsVisibleBuffer);
-    end
-
-end
-
-LPELotroGoldWindow = class (Turbine.UI.Lotro.GoldWindow);
-
-function LPELotroGoldWindow:Constructor()
-    
-    Turbine.UI.Lotro.GoldWindow.Constructor(self);
-
-    self.HUDVisible = true;
-
-    self:SetWantsKeyEvents(true);
-    self.KeyDown = function(sender, args)
-        if args.Action == Turbine.UI.Lotro.Action.Escape then
-            if self:IsVisible() then self:Close() end;
-        elseif args.Action == 0x100000B3 then
-            self:ToggleUI();
-        end
-    end
-
-end
-
-function LPELotroGoldWindow:ToggleUI()
-
-    self.HUDVisible = not self.HUDVisible;
-    
-    if not self.HUDVisible then
-        self.IsVisibleBuffer = self:IsVisible();
-        self:SetVisible(self.HUDVisible);
-    else
-        self:SetVisible(self.IsVisibleBuffer);
-    end
-
-end
-
 _G.UI={};
 
 UI.PlayerColors = {
@@ -176,10 +104,83 @@ UI.Fonts = {
     },
 }
 
-import (UIDirectory .. ".DebugWindow");
-import (UIDirectory .. ".ParserWindow");
-import (UIDirectory .. ".MainWindow");
-import (UIDirectory .. ".ToggleWindow");
-import (UIDirectory .. ".AlertsWindow");
-import (UIDirectory .. ".PlayerTrackerWindow");
-import (UIDirectory .. ".PluginOptions");
+LPEWindow = class (Turbine.UI.Window);
+
+function LPEWindow:Constructor()
+
+    Turbine.UI.Window.Constructor(self);
+    
+end
+
+LPELotroWindow = class (Turbine.UI.Lotro.Window);
+
+function LPELotroWindow:Constructor()
+    
+    Turbine.UI.Lotro.Window.Constructor(self);
+
+    self.HUDVisible = true;
+
+    self:SetWantsKeyEvents(true);
+    self.KeyDown = function(sender, args)
+        if args.Action == Turbine.UI.Lotro.Action.Escape then
+            if self:IsVisible() then self:Close() end;
+        elseif args.Action == 0x100000B3 then
+            self:ToggleUI();
+        end
+    end
+
+end
+
+function LPELotroWindow:ToggleUI()
+
+    self.HUDVisible = not self.HUDVisible;
+    
+    if not self.HUDVisible then
+        self.IsVisibleBuffer = self:IsVisible();
+        self:SetVisible(self.HUDVisible);
+    else
+        self:SetVisible(self.IsVisibleBuffer);
+    end
+
+end
+
+LPELotroGoldWindow = class (Turbine.UI.Lotro.GoldWindow);
+
+function LPELotroGoldWindow:Constructor()
+    
+    Turbine.UI.Lotro.GoldWindow.Constructor(self);
+
+    self.HUDVisible = true;
+
+    self:SetWantsKeyEvents(true);
+    self.KeyDown = function(sender, args)
+        if args.Action == Turbine.UI.Lotro.Action.Escape then
+            if self:IsVisible() then self:Close() end;
+        elseif args.Action == 0x100000B3 then
+            self:ToggleUI();
+        end
+    end
+
+end
+
+function LPELotroGoldWindow:ToggleUI()
+
+    self.HUDVisible = not self.HUDVisible;
+    
+    if not self.HUDVisible then
+        self.IsVisibleBuffer = self:IsVisible();
+        self:SetVisible(self.HUDVisible);
+    else
+        self:SetVisible(self.IsVisibleBuffer);
+    end
+
+end
+
+import (Path.Utils .. ".UI");
+import (Path.UI .. ".DebugWindow");
+import (Path.UI .. ".ParserWindow");
+import (Path.UI .. ".MainWindow");
+import (Path.UI .. ".ToggleWindow");
+import (Path.UI .. ".AlertsWindow");
+import (Path.UI .. ".PlayerTrackerWindow");
+import (Path.UI .. ".PluginOptions");

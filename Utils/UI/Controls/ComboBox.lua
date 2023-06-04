@@ -1,6 +1,6 @@
 import "Turbine.UI";
 
-ComboBox = class(Turbine.UI.Control);
+_G.ComboBox = class(Turbine.UI.Control);
 
 function ComboBox:Constructor()
     Turbine.UI.Control.Constructor(self);
