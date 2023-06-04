@@ -32,8 +32,8 @@ function DeedSlayer:IncrementProgress()
         local playerRace = player:GetRace();
         local playerIsLocal = table.equal(playerName, SessionInstance.LocalPlayer:GetName());
         --Checking if player has not completed the deed and stays in range for the progress to be achieved.
-        if not table.indexOf(self.PlayersCompleted, playerName) and (PluginSettings.Main.AnyDist or playerRace ~= 0)  then
-            local multiplier = ((playerIsLocal and PluginSettings.Main.SimulateAcceleration) or UI.MainWindow.GroupContainer.Players[i].EffectDisplay:GetEffect()) and 2 or 1;
+        if not table.indexOf(self.PlayersCompleted, playerName) and (Settings.Main.AnyDist or playerRace ~= 0)  then
+            local multiplier = ((playerIsLocal and Settings.Main.SimulateAcceleration) or UI.MainWindow.GroupContainer.Players[i].EffectDisplay:GetEffect()) and 2 or 1;
             local progress = self.PlayerProgress[playerName];
             --Checking if player's progress found in list.
             if progress then
