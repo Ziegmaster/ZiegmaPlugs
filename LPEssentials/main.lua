@@ -11,12 +11,15 @@ import (Path.Utils .. ".LuaTable");
 import (Path.Utils .. ".VindarPatch");
 import (Path.Utils .. ".Misc");
 
-_G.Settings = LoadDefaultSettings();
-_G.SessionInstance = nil;
+SessionInstance = nil;
 
 PatchDataLoad(Turbine.DataScope.Account, plugin:GetName() .. "_Settings", function(data)
 
+    Settings = LoadDefaultSettings();
+
     if data then Settings = table.merge(Settings, data) end;
+
+    Turbine.Shell.WriteLine(DumpObject(Settings));
 
     import (Path.Plugin .. ".Locale." .. Settings.Locale.Short);
     Turbine.Shell.WriteLine(plugin:GetName() .. " " .. plugin:GetVersion() .." [" .. Settings.Locale.Short .. "] by " .. plugin:GetAuthor());
