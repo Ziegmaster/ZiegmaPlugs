@@ -19,8 +19,6 @@ PatchDataLoad(Turbine.DataScope.Account, plugin:GetName() .. "_Settings", functi
 
     if data then Settings = table.merge(Settings, data) end;
 
-    Turbine.Shell.WriteLine(DumpObject(Settings));
-
     import (Path.Plugin .. ".Locale." .. Settings.Locale.Short);
     Turbine.Shell.WriteLine(plugin:GetName() .. " " .. plugin:GetVersion() .." [" .. Settings.Locale.Short .. "] by " .. plugin:GetAuthor());
 
