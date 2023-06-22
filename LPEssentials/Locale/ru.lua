@@ -23,7 +23,7 @@ Texts.UI.DevMessage = "Lotro Points Essentials " .. plugin:GetVersion() .. " by 
 "\n                        I      I  /      /"..
 "\n                        I      I/     ---. _              Есть идеи по доработке плагина?"..
 "\n                        I       __/     /     ;"..
-"\n                        I     /     )    /     /             Пишите в Дискорде:: никнейм -> ziegmaster"..
+"\n                        I     /     )    /     /             Пишите в Дискорде: никнейм -> ziegmaster"..
 "\n                        I   /      /_ /\\__/\\"..
 "\n                        I /      /              I           Если хотите отблагодарить -> отправляйте плюшки"..
 "\n                        (        \\             I                                Lovelive на сервере Brandywine"..
