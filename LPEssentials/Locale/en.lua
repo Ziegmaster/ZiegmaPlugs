@@ -64,8 +64,7 @@ Texts.UI.Settings = {
 };
 
 Texts.UI.EffectTracker = {
-    SlayerDeedAcceleration = "Prelude to Hope"
-    --SlayerDeedAcceleration = "Slayer Deed Acceleration",
+    SlayerDeedAcceleration = "Slayer Deed Acceleration",
 };
 
 Texts.Parser = {
