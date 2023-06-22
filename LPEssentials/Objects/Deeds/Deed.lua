@@ -1,14 +1,14 @@
 --Pseudo deed superclass.
-_G.Deed = class();
+Objects.Deed = class();
 
-function Deed:Constructor(Name, Location, Level)
+function Objects.Deed:Constructor(name, location, level)
 
     --Deed's ingame name.
-    self.Name = Name;
+    self.Name = name;
     --Name of location or race name.
-    self.Location = Location;
+    self.Location = location;
     --Object of min levels for deed to be started or advanced.
-    self.Level = Level;
+    self.Level = level;
     --List of players progressing the deed.
     self.PlayersProgress = {};
     --List of players completed the deed.

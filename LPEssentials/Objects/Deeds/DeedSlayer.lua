@@ -1,22 +1,20 @@
-_G.DeedSlayer = class(Deed);
+Objects.DeedSlayer = class(Objects.Deed);
 
-function DeedSlayer:Constructor(Name, Location, Level, Objective)
+function Objects.DeedSlayer:Constructor(name, location, level, objective)
 
-    Deed.Constructor(self, Name, Location, Level);
+    Objects.Deed.Constructor(self, name, location, level);
 
-    self.Objective = Objective;
-    self.PlayerProgress = {};
-
+    self.Objective = objective;
 end
 
 --Gets LocalPlayer's deed progress.
-function DeedSlayer:GetLocalProgress()
-    local progress = self.PlayerProgress[SessionInstance.LocalPlayer:GetName()];
+function Objects.DeedSlayer:GetLocalProgress()
+    local progress = self.PlayersProgress[Plugin.LocalPlayer:GetName()];
     if progress then
         local index = #progress;
         return {
             Objective = self.Objective * index,
-            Progress = self.PlayerProgress[SessionInstance.LocalPlayer:GetName()][index],
+            Progress = self.PlayersProgress[Plugin.LocalPlayer:GetName()][index],
         }
     else
         return nil;
@@ -24,17 +22,17 @@ function DeedSlayer:GetLocalProgress()
 end
 
 --Increments progress value for each group member in session data.
-function DeedSlayer:IncrementProgress()
-    local playersProgressed = false;
-    local localPlayerProgressed = false;
-    for i, player in pairs(SessionInstance.PlayerGroup) do
-        local playerName = player:GetName();
-        local playerRace = player:GetRace();
-        local playerIsLocal = table.equal(playerName, SessionInstance.LocalPlayer:GetName());
+function Objects.DeedSlayer:IncrementProgress()
+    local players_progressed = false;
+    local local_player_progressed = false;
+    for i, player in pairs(CurrentSession.PlayerGroup) do
+        local player_name = player:GetName();
+        local player_race = player:GetRace();
+        local player_is_local = table.equal(player_name, Plugin.LocalPlayer:GetName());
         --Checking if player has not completed the deed and stays in range for the progress to be achieved.
-        if not table.indexOf(self.PlayersCompleted, playerName) and (Settings.Main.AnyDist or playerRace ~= 0)  then
-            local multiplier = ((playerIsLocal and Settings.Main.SimulateAcceleration) or UI.MainWindow.GroupContainer.Players[i].EffectDisplay:GetEffect()) and 2 or 1;
-            local progress = self.PlayerProgress[playerName];
+        if not table.indexOf(self.PlayersCompleted, player_name) and (Plugin.Settings.Flags.AnyDist or player_race ~= 0)  then
+            local multiplier = ((player_is_local and Plugin.Settings.Flags.SimulateAcceleration) or Plugin.PlayerTracker.TrackSlots[i].AccelerationEffect) and 2 or 1;
+            local progress = self.PlayersProgress[player_name];
             --Checking if player's progress found in list.
             if progress then
                 local index = #progress;
@@ -50,27 +48,27 @@ function DeedSlayer:IncrementProgress()
                             --Checking if player's level is enough for next stage.
                             if player:GetLevel() >= self.Level[index+1] then
                                 --Add new index to the progress.
-                                table.insert(self.PlayerProgress[playerName], 0);
+                                table.insert(self.PlayersProgress[player_name], 0);
                             end
                         else
                             --Set deed as completed. 
                             table.insert(self.PlayersCompleted, player:GetName());
                         end
                     end
-                    self.PlayerProgress[playerName][index] = value;
-                    playersProgressed = true;
-                    if playerIsLocal then localPlayerProgressed = true end;
+                    self.PlayersProgress[player_name][index] = value;
+                    players_progressed = true;
+                    if player_is_local then local_player_progressed = true end;
                 end
             else
                 --Checking if player's level is enough to start progressing the deed.
                 if player:GetLevel() >= self.Level[1] then
                     --Init a progress for the player.
-                    self.PlayerProgress[playerName] = {multiplier};
-                    playersProgressed = true;
-                    if playerIsLocal then localPlayerProgressed = true end;
+                    self.PlayersProgress[player_name] = {multiplier};
+                    players_progressed = true;
+                    if player_is_local then local_player_progressed = true end;
                 end
             end
         end
     end
-    return playersProgressed, localPlayerProgressed;
+    return players_progressed, local_player_progressed;
 end

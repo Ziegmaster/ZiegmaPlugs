@@ -1,3 +1,3 @@
-import (Path.Objects .. ".Deeds.Deed");
-import (Path.Objects .. ".Deeds.DeedSlayer");
-import (Path.Objects .. ".Deeds.DeedSlayerRacial");
+import (Framework.Path.Objects .. ".Deeds.Deed");
+import (Framework.Path.Objects .. ".Deeds.DeedSlayer");
+import (Framework.Path.Objects .. ".Deeds.DeedSlayerRacial");

@@ -1,29 +1,52 @@
 _G.Texts = {};
+
 Texts.UI = {};
-Texts.UI.Hint = "Lotro Points Essentials " .. plugin:GetVersion() .. " by " .. plugin:GetAuthor() ..
+
+Texts.UI.DevMessage = "Lotro Points Essentials " .. plugin:GetVersion() .. " by " .. plugin:GetAuthor() ..
 "\n\n" ..
 "This plugin counts defeated enemies for each group member and tracks their deed progression." ..
 "\n" ..
 "Press start to start your session." ..
 "\n\n" ..
-"Works at character render distance." ..
+"Works at character render distance and chat log distance." ..
 "\n" ..
 "Supported regions: Ered Luin, Bree, Shire, Wraith of Water(Fornost)." ..
 "\n" ..
 "Also supports racial slayer deeds for beornings." ..
 "\n" ..
-"We do not recommend using it in a raid, as well as changing the composition of the group after the start of the session due to Lotro API issues." ..
-"\n\n\n" ..
-"Found a bug? Have an idea how to improve the plugin? There is my Discord: Ziegmaster#2410" ..
-"\n" ..
-"Good luck with your LP farm.";
-Texts.UI.Options = {
-    LocaleLabel = "Change locale\nPlugin will be reloaded",
+"Do not use it in raids and do not change the composition of the group after the start of the session." ..
+"\n\n" ..
+"                                              Press Ctrl + \\ to move UI elements." ..
+"\n\n                        . \" \" .        . \" \" ." ..
+"\n                        I      I      /      /"..
+"\n                        I      I    /      /          Found a bug?"..
+"\n                        I      I  /      /"..
+"\n                        I      I/     ---. _              Have an idea how to improve the plugin?"..
+"\n                        I       __/     /     ;"..
+"\n                        I     /     )    /     /             DM me in Discord: nickname -> ziegmaster"..
+"\n                        I   /      /_ /\\__/\\"..
+"\n                        I /      /              I           If you want to thank me -> send something sweat to"..
+"\n                        (        \\             I                                         Lovelive on Brandywine"..
+"\n                         \\                   /"..
+"\n                          I                  I        Good luck with your LP farm!"..
+"\n                          I__________I";
+
+Texts.UI.MainWindowHeader = {
+    Main = "Main",
+    Settings = "Settings",
+    Close = "Close",
+};
+
+Texts.UI.Start = "START";
+Texts.UI.Stop = "STOP";
+Texts.UI.TFA = "Player is too far away";
+
+Texts.UI.Settings = {
+    AlertsLabel = "Alerts",
+    LocaleLabel = "Locale",
     SimulateAcceleration = "Simulate deed acceleration\n (For your character)",
     AnyDist = "Work at any distance",
     AlertsEnabled = "Show progress alerts",
-    AlertsStyle = "Style",
-    AlertsStyleTitle = "Alerts style",
     AlertsWindowWidth = "Width",
     AlertsWindowHeight = "Height",
     AlertExample1 = "Example 1",
@@ -38,31 +61,19 @@ Texts.UI.Options = {
     Green = "Green",
     Blue = "Blue",
     Alpha = "Alpha channel",
-    PlayerTrackerEnabled = "Show interfering players",
-}
-Texts.UI.PlayerTracker = {
-    InterferingPlayers = "Interfering players",
-    InvitePlayer = "Invite",
-}
-Texts.UI.EffectTracker = {
-    SlayerDeedAcceleration = "Slayer Deed Acceleration",
-}
-Texts.UI.PressStart = "Press start";
-Texts.UI.TFA = "TFA";
-Texts.UI.Buttons = {
-    Start = "Start",
-    Reset = "Reset",
-    Parser = "Parser",
-    Debug = "Debug",
 };
+
+Texts.UI.EffectTracker = {
+    SlayerDeedAcceleration = "Prelude to Hope"
+    --SlayerDeedAcceleration = "Slayer Deed Acceleration",
+};
+
 Texts.Parser = {
     LocalPlayerAlias = "Your mighty blow",
     DefeatSearchPattern = "^(.+) defeated ?[the]- (.+)%.",
-    DeedsFound = "Deeds Found:",
-    NoDeeds = "No deeds found for this creature.",
-    ProgressAchieved = "Progress achieved.",
-    ProgressDenied = "Progress denied.",
+    LPSearchPattern = "^You've earned (.+) LOTRO Points%.",
 };
+
 Texts.Bestiary = {};
 Texts.Bestiary.Locations = {
     EredLuin = "Ered Luin",

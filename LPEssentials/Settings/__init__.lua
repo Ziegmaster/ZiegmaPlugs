@@ -1,71 +1,71 @@
-function _G.LoadDefaultSettings()
-    local Settings = {};
-    Settings.FirstLaunch = true;
-    Settings.Main = {
-        SimulateAcceleration = false;
-        AnyDist = false;
-    };
-    Settings.UI = {};
-    Settings.UI.ElementsDefaultMargin = 5;
-    Settings.UI.WindowEdgeMargin = 30;
-    Settings.UI.MainWindowToggle = {};
-    Settings.UI.MainWindowToggle.xPos = Turbine.UI.Display:GetWidth() - 48;
-    Settings.UI.MainWindowToggle.yPos = Turbine.UI.Display:GetHeight() - 48;
-    Settings.UI.AlertsWindow = {};
-    Settings.UI.AlertsWindow.Enabled = true;
-    Settings.UI.AlertsWindow.Height = 160;
-    Settings.UI.AlertsWindow.Width = 600;
-    Settings.UI.AlertsWindow.xPos = (Turbine.UI.Display:GetWidth() - Settings.UI.AlertsWindow.Width) / 2;
-    Settings.UI.AlertsWindow.yPos = (Turbine.UI.Display:GetHeight() - Settings.UI.AlertsWindow.Height) / 2 - 200;
-    Settings.UI.AlertsWindow.BackgroundOpacity = 0.6;
-    Settings.UI.AlertsWindow.Font = 41;
-    Settings.UI.AlertsWindow.TextRed = 0.1;
-    Settings.UI.AlertsWindow.TextGreen = 1.0;
-    Settings.UI.AlertsWindow.TextBlue = 0.1;
-    Settings.UI.AlertsWindow.TextAlpha = 1.0;
-    Settings.UI.PlayerTrackerWindow = {};
-    Settings.UI.PlayerTrackerWindow.Width = 300;
-    Settings.UI.PlayerTrackerWindow.Height = 200;
-    Settings.UI.PlayerTrackerWindow.Enabled = false;
-    Settings.UI.PlayerTrackerWindow.xPos = (Turbine.UI.Display:GetWidth() - Settings.UI.PlayerTrackerWindow.Width) / 2;
-    Settings.UI.PlayerTrackerWindow.yPos = (Turbine.UI.Display:GetHeight() - Settings.UI.PlayerTrackerWindow.Height) / 2;
-    Settings.UI.MainWindow = {};
-    Settings.UI.MainWindow.Height = 446;
-    Settings.UI.MainWindow.Width = 620;
-    Settings.UI.MainWindow.xPos = Turbine.UI.Display:GetWidth()/2 - Settings.UI.MainWindow.Width/2;
-    Settings.UI.MainWindow.yPos = Turbine.UI.Display:GetHeight()/2 - Settings.UI.MainWindow.Height/2;
-    Settings.UI.MainWindow.GroupContainer = {};
-    Settings.UI.MainWindow.GroupContainer.Height = 300 + 5 * Settings.UI.ElementsDefaultMargin;
-    Settings.UI.MainWindow.GroupContainer.Width = 150;
-    Settings.UI.MainWindow.GroupContainer.xPos = Settings.UI.WindowEdgeMargin - Settings.UI.ElementsDefaultMargin * 2;
-    Settings.UI.MainWindow.GroupContainer.yPos = Settings.UI.WindowEdgeMargin + Settings.UI.ElementsDefaultMargin;
-    Settings.UI.MainWindow.GroupContainer.PlayerBadge = {};
-    Settings.UI.MainWindow.GroupContainer.PlayerBadge.Height = 50;
-    Settings.UI.MainWindow.GroupContainer.PlayerBadge.Width = 150;
-    Settings.UI.MainWindow.ButtonContainer = {};
-    Settings.UI.MainWindow.ButtonContainer.RowCount = 2;
-    Settings.UI.MainWindow.ButtonContainer.xPos = Settings.UI.WindowEdgeMargin - Settings.UI.ElementsDefaultMargin * 2;
-    Settings.UI.MainWindow.ButtonContainer.yPos = Settings.UI.MainWindow.GroupContainer.yPos + Settings.UI.MainWindow.GroupContainer.Height + Settings.UI.ElementsDefaultMargin * 2;
-    Settings.UI.MainWindow.ButtonContainer.ButtonWidth = 70;
-    Settings.UI.MainWindow.ButtonContainer.ButtonHeight = 30;
-    Settings.UI.MainWindow.ButtonContainer.Height = Settings.UI.MainWindow.ButtonContainer.RowCount * Settings.UI.MainWindow.ButtonContainer.ButtonHeight + (Settings.UI.MainWindow.ButtonContainer.RowCount - 1) * Settings.UI.ElementsDefaultMargin;
-    Settings.UI.MainWindow.ButtonContainer.Width = Settings.UI.MainWindow.ButtonContainer.RowCount * Settings.UI.MainWindow.ButtonContainer.ButtonWidth + (Settings.UI.MainWindow.ButtonContainer.RowCount - 1) * Settings.UI.ElementsDefaultMargin * 2;
-    Settings.UI.MainWindow.TimeSpan = {};
-    Settings.UI.MainWindow.TimeSpan.Height = 50 + Settings.UI.ElementsDefaultMargin;
-    Settings.UI.MainWindow.TimeSpan.Width = 150;
-    Settings.UI.MainWindow.TimeSpan.xPos = Settings.UI.WindowEdgeMargin + Settings.UI.MainWindow.ButtonContainer.Width;
-    Settings.UI.MainWindow.TimeSpan.yPos = Settings.UI.MainWindow.GroupContainer.yPos + Settings.UI.MainWindow.GroupContainer.Height + Settings.UI.ElementsDefaultMargin * 2;
-    Settings.UI.MainWindow.DeedContainer = {};
-    Settings.UI.MainWindow.DeedContainer.Height = Settings.UI.MainWindow.GroupContainer.Height;
-    Settings.UI.MainWindow.DeedContainer.Width = Settings.UI.MainWindow.Width - Settings.UI.MainWindow.GroupContainer.Width - Settings.UI.WindowEdgeMargin*2 + Settings.UI.ElementsDefaultMargin * 2;
-    Settings.UI.MainWindow.DeedContainer.xPos = Settings.UI.MainWindow.GroupContainer.Width + Settings.UI.WindowEdgeMargin;
-    Settings.UI.MainWindow.DeedContainer.yPos = Settings.UI.MainWindow.GroupContainer.yPos;
-    Settings.UI.MainWindow.DeedContainer.DeedBadge = {};
-    Settings.UI.MainWindow.DeedContainer.DeedBadge.Height = Settings.UI.MainWindow.GroupContainer.PlayerBadge.Height;
-    Settings.UI.MainWindow.DeedContainer.DeedBadge.Width = Settings.UI.MainWindow.DeedContainer.Width;
-    Settings.Locale = {
-        Index = 1,
-        Short = "EN",
-    };
-    return Settings;
-end
+Plugin.Settings = {};
+
+Plugin.Settings.Locale = {
+    Index = 1,
+    Short = "EN",
+};
+
+Plugin.Settings.Flags = {
+    FirstLaunch = true;
+    SimulateAcceleration = false;
+    AnyDist = false;
+};
+
+
+Plugin.Settings.UI = {};
+Plugin.Settings.UI.DefaultBorderWidth = 2;
+Plugin.Settings.UI.ElementsDefaultMargin = 5;
+Plugin.Settings.UI.WindowEdgeMargin = 20;
+Plugin.Settings.UI.DefaultBorderColor = Turbine.UI.Color(1, 0.2, 0.2, 0.3);
+Plugin.Settings.UI.WindowDefaultBackground = Turbine.UI.Color(0.94,0,0,0.02);
+
+Plugin.Settings.UI.MainWindow = {};
+Plugin.Settings.UI.MainWindow.Toggle = {};
+Plugin.Settings.UI.MainWindow.Toggle.Height = 48;
+Plugin.Settings.UI.MainWindow.Toggle.Width = 48;
+Plugin.Settings.UI.MainWindow.Toggle.xPos = Framework.Const.SCREEN_WIDTH - Plugin.Settings.UI.MainWindow.Toggle.Width;
+Plugin.Settings.UI.MainWindow.Toggle.yPos = Framework.Const.SCREEN_HEIGHT - Plugin.Settings.UI.MainWindow.Toggle.Height;
+Plugin.Settings.UI.MainWindow.Height = 600;
+Plugin.Settings.UI.MainWindow.Width = 800;
+Plugin.Settings.UI.MainWindow.xPos = Framework.Const.SCREEN_WIDTH/2 - Plugin.Settings.UI.MainWindow.Width/2;
+Plugin.Settings.UI.MainWindow.yPos = Framework.Const.SCREEN_HEIGHT/2 - Plugin.Settings.UI.MainWindow.Height/2;
+Plugin.Settings.UI.MainWindow.HeaderHeight = 32;
+Plugin.Settings.UI.MainWindow.HeaderFakeHeight = Plugin.Settings.UI.MainWindow.HeaderHeight - Plugin.Settings.UI.DefaultBorderWidth + Plugin.Settings.UI.WindowEdgeMargin;
+Plugin.Settings.UI.MainWindow.PageHeight = 570;
+Plugin.Settings.UI.MainWindow.PageContentHeight = Plugin.Settings.UI.MainWindow.PageHeight - Plugin.Settings.UI.WindowEdgeMargin * 2;
+Plugin.Settings.UI.MainWindow.PageContentWidth = Plugin.Settings.UI.MainWindow.Width - Plugin.Settings.UI.WindowEdgeMargin * 2;
+
+Plugin.Settings.UI.MainWindow.GroupContainer = {};
+Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot = {};
+Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Height = 75;
+Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Width = 250;
+Plugin.Settings.UI.MainWindow.GroupContainer.Height = 6 * Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Height + 5 * Plugin.Settings.UI.ElementsDefaultMargin;
+Plugin.Settings.UI.MainWindow.GroupContainer.Width = Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Width;
+
+Plugin.Settings.UI.MainWindow.DeedContainer = {};
+Plugin.Settings.UI.MainWindow.DeedContainer.Height = Plugin.Settings.UI.MainWindow.GroupContainer.Height;
+Plugin.Settings.UI.MainWindow.DeedContainer.Width = Plugin.Settings.UI.MainWindow.PageContentWidth - Plugin.Settings.UI.MainWindow.GroupContainer.Width - Plugin.Settings.UI.ElementsDefaultMargin;
+Plugin.Settings.UI.MainWindow.DeedContainer.xPos = Plugin.Settings.UI.MainWindow.GroupContainer.Width + Plugin.Settings.UI.ElementsDefaultMargin;
+Plugin.Settings.UI.MainWindow.DeedContainer.yPos = Plugin.Settings.UI.MainWindow.GroupContainer.yPos;
+Plugin.Settings.UI.MainWindow.DeedContainer.DeedSlot = {};
+Plugin.Settings.UI.MainWindow.DeedContainer.DeedSlot.Height = Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Height;
+Plugin.Settings.UI.MainWindow.DeedContainer.DeedSlot.Width = Plugin.Settings.UI.MainWindow.DeedContainer.Width;
+
+Plugin.Settings.UI.MainWindow.Page1Footer = {};
+Plugin.Settings.UI.MainWindow.Page1Footer.ControlsWidth = (Plugin.Settings.UI.MainWindow.PageContentWidth - Plugin.Settings.UI.ElementsDefaultMargin * 2) / 3;
+Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight = Plugin.Settings.UI.MainWindow.PageContentHeight - Plugin.Settings.UI.MainWindow.GroupContainer.Height - Plugin.Settings.UI.ElementsDefaultMargin;
+Plugin.Settings.UI.MainWindow.Page1Footer.ControlsYPos = Plugin.Settings.UI.MainWindow.GroupContainer.Height + Plugin.Settings.UI.ElementsDefaultMargin;
+
+
+Plugin.Settings.UI.AlertsWindow = {};
+Plugin.Settings.UI.AlertsWindow.Enabled = true;
+Plugin.Settings.UI.AlertsWindow.Height = 160;
+Plugin.Settings.UI.AlertsWindow.Width = 600;
+Plugin.Settings.UI.AlertsWindow.xPos = (Framework.Const.SCREEN_WIDTH - Plugin.Settings.UI.AlertsWindow.Width) / 2;
+Plugin.Settings.UI.AlertsWindow.yPos = (Framework.Const.SCREEN_HEIGHT - Plugin.Settings.UI.AlertsWindow.Height) / 2 - 200;
+Plugin.Settings.UI.AlertsWindow.BackgroundOpacity = 0.6;
+Plugin.Settings.UI.AlertsWindow.Font = 49;
+Plugin.Settings.UI.AlertsWindow.TextRed = 0.1;
+Plugin.Settings.UI.AlertsWindow.TextGreen = 1.0;
+Plugin.Settings.UI.AlertsWindow.TextBlue = 0.1;
+Plugin.Settings.UI.AlertsWindow.TextAlpha = 1.0;

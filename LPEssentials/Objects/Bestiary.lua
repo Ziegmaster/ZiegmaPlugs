@@ -1,55 +1,55 @@
 --This class is for linking all text data together and store it in objects
-_G.Bestiary = class();
+Objects.Bestiary = class();
 
-function Bestiary:Constructor()
+function Objects.Bestiary:Constructor()
     self:InitDeeds();
     self:LinkCreatures();
 end
 
 --Creates pseudo deeds
-function Bestiary:InitDeeds()
+function Objects.Bestiary:InitDeeds()
     self.SlayerDeeds = {};
     self.SlayerDeeds.Bree = {
-        Spider = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.Spider, Texts.Bestiary.Locations.Bree, {5, 5}, 30),
-        Neekerbreeker = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.Neekerbreeker, Texts.Bestiary.Locations.Bree, {5, 5}, 30),
-        Brigand = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.Brigand, Texts.Bestiary.Locations.Bree, {5, 5}, 30),
-        SickleFly = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.SickleFly, Texts.Bestiary.Locations.Bree, {6, 6}, 20),
-        Wight = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.Wight, Texts.Bestiary.Locations.Bree, {12, 12}, 30),
-        Barghest = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.Barghest, Texts.Bestiary.Locations.Bree, {12, 12}, 30),
-        Woodsman = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.Woodsman, Texts.Bestiary.Locations.Bree, {12, 12}, 20),
-        GraveDigger = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.GraveDigger, Texts.Bestiary.Locations.Bree, {15, 15}, 50),
-        NemesisOfTheFallen = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.NemesisOfTheFallen, Texts.Bestiary.Locations.Bree, {15, 15}, 50),
-        BroodHunter = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.BroodHunter, Texts.Bestiary.Locations.Bree, {15, 15}, 30),
-        Orc = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.Orc, Texts.Bestiary.Locations.Bree, {10, 10}, 30),
+        Spider = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.Spider, Texts.Bestiary.Locations.Bree, {5, 5}, 30),
+        Neekerbreeker = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.Neekerbreeker, Texts.Bestiary.Locations.Bree, {5, 5}, 30),
+        Brigand = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.Brigand, Texts.Bestiary.Locations.Bree, {5, 5}, 30),
+        SickleFly = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.SickleFly, Texts.Bestiary.Locations.Bree, {6, 6}, 20),
+        Wight = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.Wight, Texts.Bestiary.Locations.Bree, {12, 12}, 30),
+        Barghest = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.Barghest, Texts.Bestiary.Locations.Bree, {12, 12}, 30),
+        Woodsman = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.Woodsman, Texts.Bestiary.Locations.Bree, {12, 12}, 20),
+        GraveDigger = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.GraveDigger, Texts.Bestiary.Locations.Bree, {15, 15}, 50),
+        NemesisOfTheFallen = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.NemesisOfTheFallen, Texts.Bestiary.Locations.Bree, {15, 15}, 50),
+        BroodHunter = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.BroodHunter, Texts.Bestiary.Locations.Bree, {15, 15}, 30),
+        Orc = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Bree.Orc, Texts.Bestiary.Locations.Bree, {10, 10}, 30),
     };
     self.SlayerDeeds.Shire = {
-        Wolf = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Shire.Wolf, Texts.Bestiary.Locations.Shire, {5, 5}, 30),
-        Slug = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Shire.Slug, Texts.Bestiary.Locations.Shire, {5, 5}, 20),
-        Brigand = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Shire.Brigand, Texts.Bestiary.Locations.Shire, {5, 5}, 30),
-        HarvestFly = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Shire.HarvestFly, Texts.Bestiary.Locations.Shire, {5, 5}, 20),
-        Spider = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Shire.Spider, Texts.Bestiary.Locations.Shire, {5, 5}, 20),
-        Goblin = DeedSlayer(Texts.Bestiary.Deeds.Slayer.Shire.Goblin, Texts.Bestiary.Locations.Shire, {5, 5}, 30),
+        Wolf = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Shire.Wolf, Texts.Bestiary.Locations.Shire, {5, 5}, 30),
+        Slug = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Shire.Slug, Texts.Bestiary.Locations.Shire, {5, 5}, 20),
+        Brigand = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Shire.Brigand, Texts.Bestiary.Locations.Shire, {5, 5}, 30),
+        HarvestFly = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Shire.HarvestFly, Texts.Bestiary.Locations.Shire, {5, 5}, 20),
+        Spider = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Shire.Spider, Texts.Bestiary.Locations.Shire, {5, 5}, 20),
+        Goblin = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.Shire.Goblin, Texts.Bestiary.Locations.Shire, {5, 5}, 30),
     }
     self.SlayerDeeds.EredLuin = {
-        Wolf = DeedSlayer(Texts.Bestiary.Deeds.Slayer.EredLuin.Wolf, Texts.Bestiary.Locations.EredLuin, {5, 5}, 30),
-        Goblin = DeedSlayer(Texts.Bestiary.Deeds.Slayer.EredLuin.Goblin, Texts.Bestiary.Locations.EredLuin, {5, 5}, 30),
-        Spider = DeedSlayer(Texts.Bestiary.Deeds.Slayer.EredLuin.Spider, Texts.Bestiary.Locations.EredLuin, {5, 5}, 30),
-        Hendroval = DeedSlayer(Texts.Bestiary.Deeds.Slayer.EredLuin.Hendroval, Texts.Bestiary.Locations.EredLuin, {5, 5}, 20),
-        Brigand = DeedSlayer(Texts.Bestiary.Deeds.Slayer.EredLuin.Brigand, Texts.Bestiary.Locations.EredLuin, {5, 5}, 30),
+        Wolf = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.EredLuin.Wolf, Texts.Bestiary.Locations.EredLuin, {5, 5}, 30),
+        Goblin = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.EredLuin.Goblin, Texts.Bestiary.Locations.EredLuin, {5, 5}, 30),
+        Spider = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.EredLuin.Spider, Texts.Bestiary.Locations.EredLuin, {5, 5}, 30),
+        Hendroval = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.EredLuin.Hendroval, Texts.Bestiary.Locations.EredLuin, {5, 5}, 20),
+        Brigand = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.EredLuin.Brigand, Texts.Bestiary.Locations.EredLuin, {5, 5}, 30),
     }
     self.SlayerDeeds.NorthDowns = {
-        Orc = DeedSlayer(Texts.Bestiary.Deeds.Slayer.NorthDowns.Orc, Texts.Bestiary.Locations.NorthDowns, {20, 20}, 60),
-        Goblin = DeedSlayer(Texts.Bestiary.Deeds.Slayer.NorthDowns.Goblin, Texts.Bestiary.Locations.NorthDowns, {20, 20}, 60),
-        Warg = DeedSlayer(Texts.Bestiary.Deeds.Slayer.NorthDowns.Warg, Texts.Bestiary.Locations.NorthDowns, {20, 20}, 60),
+        Orc = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.NorthDowns.Orc, Texts.Bestiary.Locations.NorthDowns, {20, 20}, 60),
+        Goblin = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.NorthDowns.Goblin, Texts.Bestiary.Locations.NorthDowns, {20, 20}, 60),
+        Warg = Objects.DeedSlayer(Texts.Bestiary.Deeds.Slayer.NorthDowns.Warg, Texts.Bestiary.Locations.NorthDowns, {20, 20}, 60),
     }
     self.SlayerDeeds.Beornings = {
-        EnmityOfTheGoblins = DeedSlayerRacial(Texts.Bestiary.Deeds.Slayer.Beornings.EnmityOfTheGoblins, Texts.Bestiary.Locations.Beornings, {13, 19}, 50),
-        EnmityOfTheSpiders = DeedSlayerRacial(Texts.Bestiary.Deeds.Slayer.Beornings.EnmityOfTheSpiders, Texts.Bestiary.Locations.Beornings, {15}, 50),
+        EnmityOfTheGoblins = Objects.DeedSlayerRacial(Texts.Bestiary.Deeds.Slayer.Beornings.EnmityOfTheGoblins, Texts.Bestiary.Locations.Beornings, {13, 19}, 50),
+        EnmityOfTheSpiders = Objects.DeedSlayerRacial(Texts.Bestiary.Deeds.Slayer.Beornings.EnmityOfTheSpiders, Texts.Bestiary.Locations.Beornings, {15}, 50),
     }
 end
 
 --Links creature names with existing deeds (hardcode)
-function Bestiary:LinkCreatures()
+function Objects.Bestiary:LinkCreatures()
     self.CreatureDeeds = {};
     for index, creature in pairs(Texts.Bestiary.Creatures.EredLuin.Goblin) do
         self.CreatureDeeds[creature] = {self.SlayerDeeds.EredLuin.Goblin, self.SlayerDeeds.Beornings.EnmityOfTheGoblins};

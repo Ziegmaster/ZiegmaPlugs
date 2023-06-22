@@ -1,84 +1,34 @@
-import "Turbine";
-import "Turbine.Gameplay";
-import "Turbine.UI";
-import "Turbine.UI.Lotro";
+import ("ZiegmaPlugs.Framework");
 
-import ("ZiegmaPlugs.Path");
+import (Framework.Path.Settings);
 
-import (Path.Settings);
+Locales = {"EN", "DE (Not Supported)", "FR (Not Supported)", "RU"};
 
-import (Path.Utils .. ".LuaTable");
-import (Path.Utils .. ".VindarPatch");
-import (Path.Utils .. ".Misc");
+Turbine.PluginData.Load(Turbine.DataScope.Account, Plugin:GetName() .. "_Settings", function(data)
 
-SessionInstance = nil;
+    if data then Plugin.Settings = table.merge(Plugin.Settings, Framework.Utils.TableDecode(data)) end;
 
-PatchDataLoad(Turbine.DataScope.Account, plugin:GetName() .. "_Settings", function(data)
+    import (Framework.Path.Plugin .. ".Locale." .. Plugin.Settings.Locale.Short);
+    import (Framework.Path.Objects);
+    import (Framework.Path.Parser);
+    import (Framework.Path.Shell);
+    import (Framework.Path.UI);
 
-    Settings = LoadDefaultSettings();
+    Plugin.LocalPlayer = Turbine.Gameplay.LocalPlayer:GetInstance();
+    Plugin.PlayerTracker = Objects.PlayerTracker();
+    function Start() CurrentSession = Objects.Session() end
+    function Stop() CurrentSession = nil end
 
-    if data then Settings = table.merge(Settings, data) end;
+    Plugin.Load = function(sender, args)
+        Framework.Utils.PluginUnload("LPEReloader");
+        Turbine.Shell.WriteLine(Plugin:GetName() .. " " .. Plugin:GetVersion() .." [" .. Plugin.Settings.Locale.Short .. "] by " .. Plugin:GetAuthor());
+        Plugin.Settings.FirstLaunch = false;
+    end;
 
-    import (Path.Plugin .. ".Locale." .. Settings.Locale.Short);
-    Turbine.Shell.WriteLine(plugin:GetName() .. " " .. plugin:GetVersion() .." [" .. Settings.Locale.Short .. "] by " .. plugin:GetAuthor());
-
-    AddListener(plugin, "Load", function()
-
-        PluginUnload("LPEReloader");
-
-        Settings.FirstLaunch = false;
-
-        --Start session
-        function start()
-            SessionInstance:Start();
-            UI.MainWindow.TimeSpan:SetWantsUpdates(true);
-            UI.MainWindow.DeedContainer.Hint:SetVisible(false);
-            UI.MainWindow.DeedContainer:SetWantsUpdates(true);
-        end
-        
-        --Reset session
-        function reset()
-            SessionInstance = Session();
-            UI.MainWindow.TimeSpan:SetWantsUpdates(false);
-            UI.MainWindow.TimeSpan:SetText(Texts.UI.PressStart);
-            UI.MainWindow.DeedContainer.Hint:SetVisible(true);
-        end
-    
-        AddListener(UI.MainWindow.ButtonContainer.Buttons.Start, "Click", start);
-        AddListener(UI.MainWindow.ButtonContainer.Buttons.Reset, "Click", reset);
-        AddListener(UI.MainWindow.ButtonContainer.Buttons.Parser, "Click", function(sender, args)
-            UI.ParserWindow:SetVisible(true);
-            UI.ParserWindow:Activate();
-        end);
-        AddListener(UI.MainWindow.ButtonContainer.Buttons.Debug, "Click", function(sender, args)
-            UI.DebugWindow:SetVisible(true);
-            UI.DebugWindow:Activate();
-        end);
-    
-        reset();
-
-        UI.MainWindow.GroupContainer.Fill();
-
-        AddListener(SessionInstance.LocalPlayer, "PartyChanged", function (sender, args)
-            UI.MainWindow.GroupContainer.Fill();
-            local party = SessionInstance.LocalPlayer:GetParty();
-            if party then
-                AddListener(party, "MemberAdded", UI.MainWindow.GroupContainer.Fill);
-                AddListener(party, "MemberRemoved", UI.MainWindow.GroupContainer.Fill);
-            end
-        end);
-    end);
-    
-    AddListener(plugin, "Unload", function(sender, args)
-        Settings.UI.MainWindow.xPos, Settings.UI.MainWindow.yPos = UI.MainWindow:GetPosition();
-        Settings.UI.MainWindowToggle.xPos, Settings.UI.MainWindowToggle.yPos = UI.MainWindowToggle:GetPosition();
-        Settings.UI.AlertsWindow.xPos, Settings.UI.AlertsWindow.yPos = UI.AlertsWindow:GetPosition();
-        Settings.UI.PlayerTrackerWindow.xPos, Settings.UI.PlayerTrackerWindow.yPos = UI.PlayerTrackerWindow:GetPosition();
-        PatchDataSave(Turbine.DataScope.Account, sender:GetName() .. "_Settings", Settings, function() end);
-    end);
-
-    import (Path.Objects);
-    import (Path.UI);
-    import (Path.Parser);
-
+    Plugin.Unload = function(sender, args)
+        sender.Settings.UI.MainWindow.xPos, sender.Settings.UI.MainWindow.yPos = sender.UI.MainWindow:GetPosition();
+        sender.Settings.UI.MainWindow.Toggle.xPos, sender.Settings.UI.MainWindow.Toggle.yPos = sender.UI.MainWindow.Toggle:GetPosition();
+        sender.Settings.UI.AlertsWindow.xPos, sender.Settings.UI.AlertsWindow.yPos = sender.UI.AlertsWindow:GetPosition();
+        Turbine.PluginData.Save(Turbine.DataScope.Account, sender:GetName() .. "_Settings", Framework.Utils.TableEncode(sender.Settings), function() end);
+    end
 end);

@@ -1,5 +1,3 @@
-import ("ZiegmaPlugs.Path");
+import ("ZiegmaPlugs.Framework");
 
-import (Path.Utils .. ".Misc");
-
-PluginReload("LPEssentials");
+Framework.Utils.PluginReload("LPEssentials");

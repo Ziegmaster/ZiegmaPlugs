@@ -1,29 +1,52 @@
 _G.Texts = {};
+
 Texts.UI = {};
-Texts.UI.Hint = "Lotro Points Essentials " .. plugin:GetVersion() .. " by " .. plugin:GetAuthor() ..
+
+Texts.UI.DevMessage = "Lotro Points Essentials " .. plugin:GetVersion() .. " by " .. plugin:GetAuthor() ..
 "\n\n" ..
 "Данный плагин остлеживает прогресс деяний на убийство для каждого члена группы." ..
 "\n" ..
 "Нажмите старт для начала сессии." ..
 "\n\n" ..
-"Работает в области прорисовки персонажей." ..
+"Работает в области прорисовки персонажей и на дистанции логов чата." ..
 "\n" ..
 "Работает в землях Бри, Шире, Эред Луине, инстансе \"Гнев воды\"(Форност)." ..
 "\n" ..
 "Также поддерживает расовые деяния беорнингов." ..
 "\n" ..
-"Не рекомендуется использовать в рейде, а также менять состав группы после старта из-за несовершенства API игры." ..
-"\n\n\n" ..
-"Нашли баг? Есть идеи по доработке плагина? Пишите в Дискорде: Ziegmaster#2410" ..
-"\n" ..
-"Удачного фарма!";
-Texts.UI.Options = {
-    LocaleLabel = "Сменить язык\nПлагин будет перезапущен",
+"Не рекомендуется использовать в рейде, а также менять состав группы после старта сессии." ..
+"\n\n" ..
+"                            Нажмите Ctrl + \\ чтобы переместить элементы интерфейса." ..
+"\n\n                        . \" \" .        . \" \" ." ..
+"\n                        I      I      /      /"..
+"\n                        I      I    /      /          Нашли баг?"..
+"\n                        I      I  /      /"..
+"\n                        I      I/     ---. _              Есть идеи по доработке плагина?"..
+"\n                        I       __/     /     ;"..
+"\n                        I     /     )    /     /             Пишите в Дискорде:: никнейм -> ziegmaster"..
+"\n                        I   /      /_ /\\__/\\"..
+"\n                        I /      /              I           Если хотите отблагодарить -> отправляйте плюшки"..
+"\n                        (        \\             I                                Lovelive на сервере Brandywine"..
+"\n                         \\                   /"..
+"\n                          I                  I        Удачного фарма!"..
+"\n                          I__________I";
+
+Texts.UI.MainWindowHeader = {
+    Main = "Главная",
+    Settings = "Настройки",
+    Close = "Закрыть",
+};
+
+Texts.UI.Start = "СТАРТ";
+Texts.UI.Stop = "ЗАВЕРШИТЬ";
+Texts.UI.TFA = "Игрок слишком далеко";
+
+Texts.UI.Settings = {
+    LocaleLabel = "Язык",
+    AlertsLabel = "Оповещения",
     SimulateAcceleration = "Симулировать ускорение деяний\n (Для вашего персонажа)",
     AnyDist = "Работать на любом расстоянии",
-    AlertsEnabled = "Показывать уведомления о прогрессе",
-    AlertsStyle = "Стилизовать",
-    AlertsStyleTitle = "Стиль уведомлений",
+    AlertsEnabled = "Показывать оповещения о прогрессе",
     AlertsWindowWidth = "Ширина",
     AlertsWindowHeight = "Высота",
     AlertExample1 = "Пример 1",
@@ -38,31 +61,18 @@ Texts.UI.Options = {
     Green = "Зеленый",
     Blue = "Синий",
     Alpha = "Альфа канал",
-    PlayerTrackerEnabled = "Показывать мешающих игроков",
 }
-Texts.UI.PlayerTracker = {
-    InterferingPlayers = "Мешающие игроки",
-    InvitePlayer = "Пригласить",
-}
+
 Texts.UI.EffectTracker = {
     SlayerDeedAcceleration = "Враг за двух",
 }
-Texts.UI.PressStart = "Нажмите старт";
-Texts.UI.TFA = "СД";    
-Texts.UI.Buttons = {
-    Start = "Старт",
-    Reset = "Сброс",
-    Parser = "Парсер",
-    Debug = "Отладка",
-};
+
 Texts.Parser = {
     LocalPlayerAlias = "Вы",
     DefeatSearchPattern = "^(.+) наносит?[е]- сокрушительный удар. (.+) падает замертво%.",
-    DeedsFound = "Найденные деяния:",
-    NoDeeds = "Деяний на это существо не найдено.",
-    ProgressAchieved = "Прогресс деяния засчитан.",
-    ProgressDenied = "Прогресс деяния отклонен.",
+    LPSearchPattern = "Получено (.+) марок",
 };
+
 Texts.Bestiary = {};
 Texts.Bestiary.Locations = {
     EredLuin = "Эред Луин",
