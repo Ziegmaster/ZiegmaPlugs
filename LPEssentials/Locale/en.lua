@@ -25,7 +25,7 @@ Texts.UI.DevMessage = "Lotro Points Essentials " .. plugin:GetVersion() .. " by 
 "\n                        I       __/     /     ;"..
 "\n                        I     /     )    /     /             DM me in Discord: nickname -> ziegmaster"..
 "\n                        I   /      /_ /\\__/\\"..
-"\n                        I /      /              I           If you want to thank me -> send something sweat to"..
+"\n                        I /      /              I           If you want to thank me -> send something sweet to"..
 "\n                        (        \\             I                                         Lovelive on Brandywine"..
 "\n                         \\                   /"..
 "\n                          I                  I        Good luck with your LP farm!"..
