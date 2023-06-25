@@ -1,4 +1,4 @@
-local function ParseDefeatMessage(msg)
+local function parse_defeat_message(msg)
     local slayer, prey = string.match(msg, Texts.Parser.DefeatSearchPattern);
     for i, player in pairs(CurrentSession.PlayerGroup) do
         if slayer == Texts.Parser.LocalPlayerAlias or slayer == player:GetName() then
@@ -8,13 +8,13 @@ local function ParseDefeatMessage(msg)
     return slayer, prey, false;
 end
 
-local function ParseLPMessage(msg)
+local function parse_lp_message(msg)
     return string.match(msg, Texts.Parser.LPSearchPattern);
 end
 
 Framework.Utils.AddListener(Turbine.Chat, "Received", function(sender, args)
     if args.ChatType == Turbine.ChatType.Death and CurrentSession then
-        local slayer, prey, is_fellow = ParseDefeatMessage(args.Message);
+        local slayer, prey, is_fellow = parse_defeat_message(args.Message);
         --Checking if slayer is someone in your party.
         if is_fellow then
             local deeds = CurrentSession.Bestiary.CreatureDeeds[prey];
@@ -39,7 +39,7 @@ Framework.Utils.AddListener(Turbine.Chat, "Received", function(sender, args)
         end
     end
     if args.ChatType == Turbine.ChatType.Advancement and CurrentSession then
-        local lp_earned = ParseLPMessage(args.Message);
+        local lp_earned = parse_lp_message(args.Message);
         if lp_earned then
             local lp_current = tonumber(Plugin.UI.MainWindow.PageWrapper.Pages[1].LPCounter.PointsLabel2:GetText());
             Plugin.UI.MainWindow.PageWrapper.Pages[1].LPCounter.PointsLabel2:SetText(lp_current + lp_earned);

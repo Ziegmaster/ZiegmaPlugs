@@ -11,9 +11,10 @@ function MainWindow:Constructor()
 
     self:SetSize(Plugin.Settings.UI.MainWindow.Width, Plugin.Settings.UI.MainWindow.Height);
     self:SetPosition(Plugin.Settings.UI.MainWindow.xPos, Plugin.Settings.UI.MainWindow.yPos);
-    self:SetVisible(true);
+    self:SetVisible(Plugin.Settings.Flags.FirstLaunch == true or Plugin.Settings.Flags.FirstLaunch == "true");
     self:SetMouseVisible(true);
     self:SetWantsKeyEvents(true);
+    self:Activate();
     self.HUDVisible = true;
 
     self.Toggle = MainWindowToggle(self);
@@ -41,11 +42,10 @@ function MainWindow:Constructor()
     self.Header.Title.Label:SetSize(430, Plugin.Settings.UI.MainWindow.HeaderFakeHeight);
     self.Header.Title.Label:SetPosition(20, Plugin.Settings.UI.DefaultBorderWidth);
     self.Header.Title.Label:SetFont(Framework.UI.Fonts.TrajanProBold30);
+    self.Header.Title.Label:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
     self.Header.Title.Label:SetText(Plugin:GetName());
     self.Header.Title.Label:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleCenter);
     self.Header.Title.Label:SetMouseVisible(false);
-    self.Header.Title.Label:SetZOrder(100);
-    self.Header.Title.Label:Focus();
 
     function self.GetToggle()
         return self.Toggle;
@@ -101,7 +101,6 @@ function MainWindow:Constructor()
     end
 
     function self.Activated(sender, args)
-        --Turbine.UI.Window.Close(self);
         Plugin.UI.AlertsWindow:SettingsMode(self.PageWrapper.Pages[2]:IsVisible() and Plugin.Settings.UI.AlertsWindow.Enabled);
     end
 

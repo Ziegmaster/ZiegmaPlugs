@@ -5,31 +5,30 @@ Texts.UI = {};
 Texts.UI.DevMessage = "Lotro Points Essentials " .. plugin:GetVersion() .. " by " .. plugin:GetAuthor() ..
 "\n\n" ..
 "This plugin counts defeated enemies for each group member and tracks their deed progression." ..
-"\n" ..
-"Press start to start your session." ..
 "\n\n" ..
-"Works at character render distance and chat log distance." ..
-"\n" ..
 "Supported regions: Ered Luin, Bree, Shire, Wraith of Water(Fornost)." ..
 "\n" ..
 "Also supports racial slayer deeds for beornings." ..
 "\n" ..
 "Do not use it in raids and do not change the composition of the group after the start of the session." ..
 "\n\n" ..
-"                                              Press Ctrl + \\ to move UI elements." ..
-"\n\n                        . \" \" .        . \" \" ." ..
-"\n                        I      I      /      /"..
-"\n                        I      I    /      /          Found a bug?"..
-"\n                        I      I  /      /"..
-"\n                        I      I/     ---. _              Have an idea how to improve the plugin?"..
-"\n                        I       __/     /     ;"..
-"\n                        I     /     )    /     /             DM me in Discord: nickname -> ziegmaster"..
-"\n                        I   /      /_ /\\__/\\"..
-"\n                        I /      /              I           If you want to thank me -> send something sweet to"..
-"\n                        (        \\             I                                         Lovelive on Brandywine"..
-"\n                         \\                   /"..
-"\n                          I                  I        Good luck with your LP farm!"..
-"\n                          I__________I";
+"Press Ctrl + \\ to move UI elements." ..
+"\n\n" ..
+"/lpe help - get list of commands." ..
+"\n\n" ..
+"\n                . \" \" .        . \" \" ." ..
+"\n                I      I      /      /        Found a bug?"..
+"\n                I      I    /      /"..
+"\n                I      I  /      /                   Have an idea how to improve the plugin?"..
+"\n                I      I/     ---. _"..
+"\n                I       __/     /     ;                  DM me in Discord: nickname -> ziegmaster"..
+"\n                I     /     )    /     /"..
+"\n                I   /      /_ /\\__/\\                 If you want to thank me"..
+"\n                I /      /              I"..
+"\n                (        \\             I             Send something sweet to Lovelive on Brandywine"..
+"\n                 \\                   /"..
+"\n                  I                  I        Good luck with your LP farm!"..
+"\n                  I__________I";
 
 Texts.UI.MainWindowHeader = {
     Main = "Main",

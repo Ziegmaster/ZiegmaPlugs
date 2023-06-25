@@ -51,13 +51,14 @@ function MainWindowHeader:Constructor(window)
     end
 
     self.Main.MouseLeave = function (sender, args)
-        self.Main.Label:SetForeColor(Turbine.UI.Color(1, 1 ,1));
+        self.Main.Label:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
     end
 
     self.Main.Label = Turbine.UI.Label();
     self.Main.Label:SetParent(self.Main);
     self.Main.Label:SetSize(self.Main:GetSize());
     self.Main.Label:SetFont(Framework.UI.Fonts.VerdanaBold16);
+    self.Main.Label:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
     self.Main.Label:SetText(Texts.UI.MainWindowHeader.Main);
     self.Main.Label:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleCenter);
     self.Main.Label:SetMouseVisible(false);
@@ -90,13 +91,14 @@ function MainWindowHeader:Constructor(window)
     end
 
     self.Settings.MouseLeave = function (sender, args)
-        self.Settings.Label:SetForeColor(Turbine.UI.Color(1, 1 ,1));
+        self.Settings.Label:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
     end
 
     self.Settings.Label = Turbine.UI.Label();
     self.Settings.Label:SetParent(self.Settings);
     self.Settings.Label:SetSize(self.Settings:GetSize());
     self.Settings.Label:SetFont(Framework.UI.Fonts.VerdanaBold16);
+    self.Settings.Label:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
     self.Settings.Label:SetText(Texts.UI.MainWindowHeader.Settings);
     self.Settings.Label:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleCenter);
     self.Settings.Label:SetMouseVisible(false);
@@ -130,6 +132,7 @@ function MainWindowHeader:Constructor(window)
     self.Close.Label:SetParent(self.Close);
     self.Close.Label:SetSize(self.Close:GetSize());
     self.Close.Label:SetFont(Framework.UI.Fonts.VerdanaBold16);
+    self.Close.Label:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
     self.Close.Label:SetText(Texts.UI.MainWindowHeader.Close);
     self.Close.Label:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleCenter);
     self.Close.Label:SetMouseVisible(false);

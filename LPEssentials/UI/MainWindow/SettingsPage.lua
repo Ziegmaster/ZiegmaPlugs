@@ -43,6 +43,7 @@ function SettingsPage:Constructor(container)
     
         Plugin.Settings.Locale.Index = index;
         Plugin.Settings.Locale.Short = Locales[index];
+        Plugin.Settings.Flags.FirstLaunch = true;
         Turbine.PluginManager.LoadPlugin("LPEReloader");
     end
     
@@ -50,7 +51,8 @@ function SettingsPage:Constructor(container)
     self.AccelerationCheckBox:SetParent(self);
     self.AccelerationCheckBox:SetPosition(Plugin.Settings.UI.WindowEdgeMargin, 80);
     self.AccelerationCheckBox:SetSize((Plugin.Settings.UI.MainWindow.PageContentWidth - Plugin.Settings.UI.DefaultBorderWidth) / 2 - Plugin.Settings.UI.WindowEdgeMargin * 2, 40);
-    self.AccelerationCheckBox:SetFont(Turbine.UI.Lotro.Font["Verdana16"]);
+    self.AccelerationCheckBox:SetFont(Framework.UI.Fonts.TrajanPro14);
+    self.AccelerationCheckBox:SetForeColor(Framework.UI.Controls.Colors.control2LightColor);
     self.AccelerationCheckBox:SetText(" " .. Texts.UI.Settings.SimulateAcceleration);
     self.AccelerationCheckBox:SetChecked(Plugin.Settings.Flags.SimulateAcceleration);
     self.AccelerationCheckBox.CheckedChanged = function(sender, args)
@@ -62,7 +64,8 @@ function SettingsPage:Constructor(container)
     self.AnyDistCheckBox:SetParent(self);
     self.AnyDistCheckBox:SetPosition(Plugin.Settings.UI.WindowEdgeMargin, 120);
     self.AnyDistCheckBox:SetSize((Plugin.Settings.UI.MainWindow.PageContentWidth - Plugin.Settings.UI.DefaultBorderWidth) / 2 - Plugin.Settings.UI.WindowEdgeMargin * 2, 40);
-    self.AnyDistCheckBox:SetFont(Turbine.UI.Lotro.Font["Verdana16"]);
+    self.AnyDistCheckBox:SetFont(Framework.UI.Fonts.TrajanPro14);
+    self.AnyDistCheckBox:SetForeColor(Framework.UI.Controls.Colors.control2LightColor);
     self.AnyDistCheckBox:SetText(" " .. Texts.UI.Settings.AnyDist);
     self.AnyDistCheckBox:SetChecked(Plugin.Settings.Flags.AnyDist);
     self.AnyDistCheckBox.CheckedChanged = function(sender, args)
@@ -74,7 +77,8 @@ function SettingsPage:Constructor(container)
     self.AlertsEnabledCheckBox:SetParent(self);
     self.AlertsEnabledCheckBox:SetPosition(Plugin.Settings.UI.WindowEdgeMargin, 160);
     self.AlertsEnabledCheckBox:SetSize((Plugin.Settings.UI.MainWindow.PageContentWidth - Plugin.Settings.UI.DefaultBorderWidth) / 2 - Plugin.Settings.UI.WindowEdgeMargin * 2, 40);
-    self.AlertsEnabledCheckBox:SetFont(Turbine.UI.Lotro.Font["Verdana16"]);
+    self.AlertsEnabledCheckBox:SetFont(Framework.UI.Fonts.TrajanPro14);
+    self.AlertsEnabledCheckBox:SetForeColor(Framework.UI.Controls.Colors.control2LightColor);
     self.AlertsEnabledCheckBox:SetText(" " .. Texts.UI.Settings.AlertsEnabled);
     self.AlertsEnabledCheckBox:SetChecked(Plugin.Settings.UI.AlertsWindow.Enabled);
     self.AlertsEnabledCheckBox.CheckedChanged = function(sender, args)
@@ -168,7 +172,7 @@ function SettingsPage:Constructor(container)
     self.TextLabel:SetSize((Plugin.Settings.UI.MainWindow.PageContentWidth - Plugin.Settings.UI.DefaultBorderWidth) / 2, 30);
     self.TextLabel:SetPosition((Plugin.Settings.UI.MainWindow.PageContentWidth - Plugin.Settings.UI.DefaultBorderWidth) / 2, 225);
     self.TextLabel:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleCenter);
-    self.TextLabel:SetFont(Turbine.UI.Lotro.Font["TrajanProBold22"]);
+    self.TextLabel:SetFont(Framework.UI.Fonts.TrajanProBold22);
     self.TextLabel:SetForeColor(Turbine.UI.Color(0.95, 0.85, 0.55));
     self.TextLabel:SetText(Texts.UI.Settings.AlertsFontLabel);
     

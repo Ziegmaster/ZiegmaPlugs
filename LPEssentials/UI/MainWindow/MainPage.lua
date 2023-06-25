@@ -24,7 +24,8 @@ function MainPage:Constructor(container)
         player_slot:SetParent(self.GroupContainer);
         player_slot:SetPosition(0, (i - 1) * Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Height + (i - 1) * Plugin.Settings.UI.ElementsDefaultMargin);
         player_slot.PlayerName = Turbine.UI.Label();
-        player_slot.PlayerName:SetFont(Turbine.UI.Lotro.Font["VerdanaBold16"]);
+        player_slot.PlayerName:SetFont(Framework.UI.Fonts.VerdanaBold16);
+        player_slot.PlayerName:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
         player_slot.PlayerName:SetParent(player_slot);
         player_slot.PlayerName:SetSize(Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Width - Plugin.Settings.UI.DefaultBorderWidth * 4, 20);
         player_slot.PlayerName:SetPosition(4, 4);
@@ -36,7 +37,8 @@ function MainPage:Constructor(container)
         player_slot.EffectDisplay:SetVisible(false);
         player_slot.EffectDisplay:SetZOrder(1);
         player_slot.EffectTimer = Turbine.UI.Label();
-        player_slot.EffectTimer:SetFont(Turbine.UI.Lotro.Font["VerdanaBold16"]);
+        player_slot.EffectTimer:SetFont(Framework.UI.Fonts.VerdanaBold16);
+        player_slot.EffectTimer:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
         player_slot.EffectTimer:SetParent(player_slot);
         player_slot.EffectTimer:SetSize(70, 20);
         player_slot.EffectTimer:SetPosition(28, 28);
@@ -44,7 +46,8 @@ function MainPage:Constructor(container)
         player_slot.EffectTimer:SetZOrder(1);
         player_slot.EffectTimer:SetVisible(false);
         player_slot.DistanceTrack = Turbine.UI.Label();
-        player_slot.DistanceTrack:SetFont(Turbine.UI.Lotro.Font["VerdanaBold16"]);
+        player_slot.DistanceTrack:SetFont(Framework.UI.Fonts.VerdanaBold16);
+        player_slot.DistanceTrack:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
         player_slot.DistanceTrack:SetText(Texts.UI.TFA);
         player_slot.DistanceTrack:SetParent(player_slot);
         player_slot.DistanceTrack:SetSize(Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Width - Plugin.Settings.UI.DefaultBorderWidth * 4, 20);
@@ -152,13 +155,15 @@ function MainPage:Constructor(container)
         deed_slot.DeedName:SetParent(deed_slot);
         deed_slot.DeedName:SetSize(Plugin.Settings.UI.MainWindow.DeedContainer.DeedSlot.Width/6*4, Plugin.Settings.UI.MainWindow.DeedContainer.DeedSlot.Height/2);
         deed_slot.DeedName:SetPosition(Plugin.Settings.UI.ElementsDefaultMargin, 0);
-        deed_slot.DeedName:SetFont(Turbine.UI.Lotro.Font["VerdanaBold16"]);
+        deed_slot.DeedName:SetFont(Framework.UI.Fonts.VerdanaBold16);
+        deed_slot.DeedName:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
         deed_slot.DeedName:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft);
         deed_slot.DeedLocation = Turbine.UI.Label();
         deed_slot.DeedLocation:SetParent(deed_slot);
         deed_slot.DeedLocation:SetSize(Plugin.Settings.UI.MainWindow.DeedContainer.DeedSlot.Width/6*2, Plugin.Settings.UI.MainWindow.DeedContainer.DeedSlot.Height/2);
         deed_slot.DeedLocation:SetPosition(Plugin.Settings.UI.MainWindow.DeedContainer.DeedSlot.Width/6*4 - Plugin.Settings.UI.ElementsDefaultMargin, 0);
-        deed_slot.DeedLocation:SetFont(Turbine.UI.Lotro.Font["VerdanaBold16"]);
+        deed_slot.DeedLocation:SetFont(Framework.UI.Fonts.VerdanaBold16);
+        deed_slot.DeedLocation:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
         deed_slot.DeedLocation:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleRight);
         deed_slot.PlayersProgress = {};
         for j=1, 6 do
@@ -175,6 +180,7 @@ function MainPage:Constructor(container)
             player_progress.Label:SetParent(player_progress);
             player_progress.Label:SetSize(player_progress:GetSize());
             player_progress.Label:SetFont(Framework.UI.Fonts.VerdanaBold16);
+            player_progress.Label:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
             player_progress.Label:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleCenter);
             table.insert(deed_slot.PlayersProgress, player_progress);
         end
@@ -196,7 +202,8 @@ function MainPage:Constructor(container)
     );
     self.DevMessage.Label:SetPosition(Plugin.Settings.UI.WindowEdgeMargin, Plugin.Settings.UI.WindowEdgeMargin);
     self.DevMessage.Label:SetTextAlignment(Turbine.UI.ContentAlignment.TopLeft);
-    self.DevMessage.Label:SetFont(Turbine.UI.Lotro.Font["VerdanaBold16"]);
+    self.DevMessage.Label:SetFont(Framework.UI.Fonts.VerdanaBold16);
+    self.DevMessage.Label:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
     self.DevMessage.Label:SetText(Texts.UI.DevMessage);
     
     self.TimeSpan = Framework.UI.Controls.BorderedControl(
@@ -212,6 +219,7 @@ function MainPage:Constructor(container)
     self.TimeSpan.Label:SetSize(self.TimeSpan:GetSize());
     self.TimeSpan.Label:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleCenter);
     self.TimeSpan.Label:SetFont(Framework.UI.Fonts.TrajanProBold30);
+    self.TimeSpan.Label:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
     self.TimeSpan.Label:SetText(Framework.Utils.FormatTime(0));
     self.TimeSpan.Label.Update = function ()
         self.TimeSpan.Label:SetText(Framework.Utils.FormatTime(Turbine.Engine.GetGameTime() - CurrentSession.StartTime)); 
@@ -234,6 +242,7 @@ function MainPage:Constructor(container)
     self.StartButton.Label:SetSize(self.StartButton:GetSize());
     self.StartButton.Label:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleCenter);
     self.StartButton.Label:SetFont(Framework.UI.Fonts.TrajanProBold30);
+    self.StartButton.Label:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
     self.StartButton.Label:SetText(Texts.UI.Start);
     self.StartButton.Label:SetMouseVisible(false);
     self.StartButton.MouseClick = function (args)
@@ -262,9 +271,9 @@ function MainPage:Constructor(container)
     
     self.StartButton.MouseEnter = function (args)
         if CurrentSession then
-            self.StartButton:SetBackColor(Turbine.UI.Color(0.7, 0.05, 0.05));
+            self.StartButton:SetBackColor(Turbine.UI.Color(0.7, 0, 0));
         else
-            self.StartButton:SetBackColor(Turbine.UI.Color(0.13,0.42,0.13));
+            self.StartButton:SetBackColor(Turbine.UI.Color(0.08,0.42,0.13));
         end
     end
     
@@ -293,24 +302,26 @@ function MainPage:Constructor(container)
     self.LPCounter.PointsIcon:SetParent(self.LPCounter);
     self.LPCounter.PointsIcon:SetSize(32, 32);
     self.LPCounter.PointsIcon:SetStretchMode(1);
-    self.LPCounter.PointsIcon:SetSize(Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.8, Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.8);
-    self.LPCounter.PointsIcon:SetPosition(Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.1, Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.1);
+    self.LPCounter.PointsIcon:SetSize(Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.6, Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.6);
+    self.LPCounter.PointsIcon:SetPosition(Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.2, Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.2);
     self.LPCounter.PointsIcon:SetBackground(Framework.Path.Resources .. "/lpicon.tga");
     self.LPCounter.PointsIcon:SetBackColorBlendMode(Turbine.UI.BlendMode.AlphaBlend);
 
     self.LPCounter.PointsLabel1 = Turbine.UI.Label();
     self.LPCounter.PointsLabel1:SetParent(self.LPCounter);
     self.LPCounter.PointsLabel1:SetSize(Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 1.2, Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.8);
-    self.LPCounter.PointsLabel1:SetPosition(Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.9, Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.1);
+    self.LPCounter.PointsLabel1:SetPosition(Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.7, Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.1);
     self.LPCounter.PointsLabel1:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleCenter);
     self.LPCounter.PointsLabel1:SetFont(Framework.UI.Fonts.TrajanProBold30);
+    self.LPCounter.PointsLabel1:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
     self.LPCounter.PointsLabel1:SetText('LP :');
 
     self.LPCounter.PointsLabel2 = Turbine.UI.Label();
     self.LPCounter.PointsLabel2:SetParent(self.LPCounter);
-    self.LPCounter.PointsLabel2:SetSize(Plugin.Settings.UI.MainWindow.Page1Footer.ControlsWidth - Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 2.1, Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.8);
-    self.LPCounter.PointsLabel2:SetPosition(Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 2.1, Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.1);
+    self.LPCounter.PointsLabel2:SetSize(Plugin.Settings.UI.MainWindow.Page1Footer.ControlsWidth - Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 1.9, Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.8);
+    self.LPCounter.PointsLabel2:SetPosition(Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 1.9, Plugin.Settings.UI.MainWindow.Page1Footer.ControlsHeight * 0.1);
     self.LPCounter.PointsLabel2:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleCenter);
     self.LPCounter.PointsLabel2:SetFont(Framework.UI.Fonts.TrajanProBold30);
+    self.LPCounter.PointsLabel2:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
     self.LPCounter.PointsLabel2:SetText(0);
 end
