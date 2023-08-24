@@ -1,8 +1,14 @@
 _G.Texts = {};
 
+Texts.ShellCommands = {
+    Help = "<rgb=#00FFFF><rgb=#FFBF00>" .. Plugin:GetName() .. "</rgb> commands:" ..
+    "\n<rgb=#FFBF00>/lpe <rgb=#bfff00>reload</rgb></rgb>\nReload the plugin (might be useful if something is bugged)." ..
+    "\n<rgb=#FFBF00>/lpe <rgb=#bfff00>restore</rgb></rgb>\nRestore plugin's default settings and reload.</rgb>",
+}
+
 Texts.UI = {};
 
-Texts.UI.DevMessage = "Lotro Points Essentials " .. plugin:GetVersion() .. " by " .. plugin:GetAuthor() ..
+Texts.UI.DevMessage = "Lotro Points Essentials " .. Plugin:GetVersion() .. " by " .. Plugin:GetAuthor() ..
 "\n\n" ..
 "This plugin counts defeated enemies for each group member and tracks their deed progression." ..
 "\n\n" ..

@@ -23,17 +23,29 @@ function MainPage:Constructor(container)
         );
         player_slot:SetParent(self.GroupContainer);
         player_slot:SetPosition(0, (i - 1) * Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Height + (i - 1) * Plugin.Settings.UI.ElementsDefaultMargin);
+        player_slot.PlayerColor = Framework.UI.Controls.BorderedControl(
+            18,
+            Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Height - 4,
+            Plugin.Settings.UI.DefaultBorderWidth,
+            Turbine.UI.Color(1, 0.2, 0.2, 0.3)
+        );
+        player_slot.PlayerColor.BorderLeft:SetVisible(false);
+        player_slot.PlayerColor.BorderTop:SetVisible(false);
+        player_slot.PlayerColor.BorderBottom:SetVisible(false);
+        player_slot.PlayerColor:SetParent(player_slot);
+        player_slot.PlayerColor:SetPosition(2, 2);
+        player_slot.PlayerColor:SetBackColor(Framework.UI.PlayerColors[i]);
         player_slot.PlayerName = Turbine.UI.Label();
         player_slot.PlayerName:SetFont(Framework.UI.Fonts.VerdanaBold16);
         player_slot.PlayerName:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
         player_slot.PlayerName:SetParent(player_slot);
-        player_slot.PlayerName:SetSize(Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Width - Plugin.Settings.UI.DefaultBorderWidth * 4, 20);
-        player_slot.PlayerName:SetPosition(4, 4);
+        player_slot.PlayerName:SetSize(Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Width - Plugin.Settings.UI.DefaultBorderWidth * 4 - 20, 20);
+        player_slot.PlayerName:SetPosition(24, 4);
         player_slot.PlayerName:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft);
         player_slot.EffectDisplay = Turbine.UI.Lotro.EffectDisplay();
         player_slot.EffectDisplay:SetParent(player_slot);
         player_slot.EffectDisplay:SetSize(24, 24);
-        player_slot.EffectDisplay:SetPosition(4, 26);
+        player_slot.EffectDisplay:SetPosition(24, 26);
         player_slot.EffectDisplay:SetVisible(false);
         player_slot.EffectDisplay:SetZOrder(1);
         player_slot.EffectTimer = Turbine.UI.Label();
@@ -41,7 +53,7 @@ function MainPage:Constructor(container)
         player_slot.EffectTimer:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
         player_slot.EffectTimer:SetParent(player_slot);
         player_slot.EffectTimer:SetSize(70, 20);
-        player_slot.EffectTimer:SetPosition(28, 28);
+        player_slot.EffectTimer:SetPosition(48, 28);
         player_slot.EffectTimer:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft);
         player_slot.EffectTimer:SetZOrder(1);
         player_slot.EffectTimer:SetVisible(false);
@@ -50,8 +62,8 @@ function MainPage:Constructor(container)
         player_slot.DistanceTrack:SetForeColor(Plugin.Settings.UI.DefaultFontColor);
         player_slot.DistanceTrack:SetText(Texts.UI.TFA);
         player_slot.DistanceTrack:SetParent(player_slot);
-        player_slot.DistanceTrack:SetSize(Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Width - Plugin.Settings.UI.DefaultBorderWidth * 4, 20);
-        player_slot.DistanceTrack:SetPosition(4, Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Height - 24);
+        player_slot.DistanceTrack:SetSize(Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Width - Plugin.Settings.UI.DefaultBorderWidth * 4 - 20, 20);
+        player_slot.DistanceTrack:SetPosition(24, Plugin.Settings.UI.MainWindow.GroupContainer.PlayerSlot.Height - 24);
         player_slot.DistanceTrack:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft);
         player_slot.DistanceTrack:SetZOrder(1);
         player_slot.DistanceTrack:SetVisible(false);
@@ -65,12 +77,12 @@ function MainPage:Constructor(container)
             local player_slot = self.GroupContainer.PlayerSlots[i];
             if player then
                 player_slot.PlayerName:SetText(player:GetName());
-                player_slot:SetBackColor(Framework.UI.PlayerColors1[i]);
+                player_slot.PlayerColor:SetVisible(true);
                 for j, deed_slot in pairs(self.DeedContainer.Objects) do
-                    deed_slot.PlayersProgress[i]:SetBackColor(Framework.UI.PlayerColors1[i]);
+                    deed_slot.PlayersProgress[i]:SetBackColor(Framework.UI.PlayerColors[i]);
                 end
             else
-                player_slot:SetBackColor(nil);
+                player_slot.PlayerColor:SetVisible(false);
                 player_slot.PlayerName:SetText(nil);
                 player_slot.EffectDisplay:SetEffect(nil);
                 player_slot.EffectDisplay:SetVisible(false);

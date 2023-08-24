@@ -1,12 +1,12 @@
 Framework.UI = {};
 
-Framework.UI.PlayerColors1 = {
-    Turbine.UI.Color(0.94,0.29,0.29,0.67),
-    Turbine.UI.Color(0.94,0.9,0.65,0.1),
-    Turbine.UI.Color(0.94,0.15,0.38,0.15),
-    Turbine.UI.Color(0.94,0.6,0,0.1),
-    Turbine.UI.Color( 0.94, 0.41, 0.07, 0.6),
-    Turbine.UI.Color(0.94,0.3,0.14,0.14),
+Framework.UI.PlayerColors = {
+    Turbine.UI.Color(0.15,0.4,0.15),
+    Turbine.UI.Color(0.07,0.3,0.7),
+    Turbine.UI.Color(0.7,0,0.3),
+    Turbine.UI.Color(0.6,0.6,0.1),
+    Turbine.UI.Color(0.8,0.35,0.1),
+    Turbine.UI.Color(0.5,0.2,0.8),
 }
 
 Framework.UI.Fonts = {

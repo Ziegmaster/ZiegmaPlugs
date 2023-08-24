@@ -5,10 +5,7 @@ function ShellCommand:Execute(_, str)
         return
     end
     if str == 'help' then
-        Turbine.Shell.WriteLine("<rgb=#FFBF00>" .. Plugin:GetName() .. "</rgb> commands:" ..
-            "\n<rgb=#FFBF00>/lpe <rgb=#bfff00>reload</rgb></rgb>\nReload plugin (might be helpful if something got bugged)." ..
-            "\n<rgb=#FFBF00>/lpe <rgb=#bfff00>restore</rgb></rgb>\nRestore plugin's default settings and reload."
-        );
+        Turbine.Shell.WriteLine(Texts.ShellCommands.Help);
     elseif str == 'reload' then
         Turbine.PluginManager.LoadPlugin("LPEReloader");
     elseif str == 'restore' then

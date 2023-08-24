@@ -5,8 +5,8 @@
   <Author>Ziegmaster and Jeyolin</Author>
   <Version>1.4.1</Version>
   <Description>
-This tool makes your LOTRO Points farm process much more comfortable.
-Using DX11 is highly recommended due to increased max character render distance which is needed to track deed progress.
+This tool makes the process of farming LOTRO Points much more comfortable.
+It is highly recommended to use DX11 due to the increased maximum character render distance needed to track deed progress.
   </Description>
   <Image>ZiegmaPlugs/LPEssentials/Resources/Icon.tga</Image>
  </Information>

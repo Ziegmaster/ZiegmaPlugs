@@ -1,8 +1,14 @@
 _G.Texts = {};
 
+Texts.ShellCommands = {
+    Help = "<rgb=#00FFFF><rgb=#FFBF00>" .. Plugin:GetName() .. "</rgb> команды:" ..
+    "\n<rgb=#FFBF00>/lpe <rgb=#bfff00>reload</rgb></rgb>\nПерезагрузить плагин (может пригодиться, если возникли неполадки)." ..
+    "\n<rgb=#FFBF00>/lpe <rgb=#bfff00>restore</rgb></rgb>\nВосстановить настройки по умолчанию и перезагрузить плагин.</rgb>",
+}
+
 Texts.UI = {};
 
-Texts.UI.DevMessage = "Lotro Points Essentials " .. plugin:GetVersion() .. " by " .. plugin:GetAuthor() ..
+Texts.UI.DevMessage = "Lotro Points Essentials " .. Plugin:GetVersion() .. " by " .. Plugin:GetAuthor() ..
 "\n\n" ..
 "Данный плагин остлеживает прогресс деяний на убийство для каждого члена группы." ..
 "\n\n" ..
